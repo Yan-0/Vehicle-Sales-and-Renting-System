@@ -1,4 +1,4 @@
-# Vehicle-Sales-and-Renting-System
+# Vehicle Sales and Renting System
 
 Build with HTML, CSS, and Js on the UI/UX portion and use of SQL+PHP in the back-end section.
 
