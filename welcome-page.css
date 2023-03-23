@@ -1,0 +1,95 @@
+body {
+    background-color: black;
+    height: 100vh;
+    margin: 0rem;
+    overflow: hidden; 
+  }
+  
+  @keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+  #blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, cyan, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+  }
+  
+  #blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+  }
+  
+  p{
+    font-family: 'Space Mono', monospace;
+    color: white;
+    z-index: 3;
+    font-size: 2rem;
+    position: absolute;
+    top: 65%;
+    left: 28%;
+
+  }
+
+  button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    z-index: 3;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 80%;
+    left: 46%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(3rem, 10vw, 10rem);
+    color: white;
+    padding: 0rem clamp(1rem, 2vw, 3rem);
+    border-radius: clamp(0.4rem, 0.75vw, 1rem);
+    margin: 0rem;
+    position: absolute;
+    left: 60%;
+    top: 45%;
+    translate: -50% -50%;
+    z-index: 3;
+  }
+
+  img{
+    position: absolute;
+    width: 150px;
+    left: 20%;
+    top: 45%;
+    translate: -50% -50%;
+    z-index: 3;
+
+  }
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
