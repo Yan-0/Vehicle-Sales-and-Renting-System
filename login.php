@@ -15,10 +15,13 @@
 
             if($row['user_type'] == 'user'){
                 $_SESSION['user_name'] = $row['username'];
-                header('location:index.php');
-            }
-        }else {
+                header('location:user_panel.php');
+            }elseif ($row['user_type'] == 'admin') {
+                $SESSION['user_name'] = $row['username'];
+                header('location:admin_panel.php');
+            }else {
             $error[] = 'Invalid Username or Password';
+            }
         }
     }
 ?>
@@ -38,8 +41,8 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about_us.php">About Us</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="about_us.php">About</a></li>
+                <li><a href="login.php" class="active">Login</a></li>
             </ul>
         </nav>
     </header>

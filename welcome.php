@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="welcome-page.css" rel="stylesheet">
-    <title>Safe Automobiles</title>
+    <title>Stellar Automobiles</title>
 </head>
 <body>
 <div id="blob"></div>
