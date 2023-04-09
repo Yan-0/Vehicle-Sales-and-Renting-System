@@ -31,46 +31,45 @@
             <th>Price</th>
         </tr>
         <tr>
-            <td>1</td>
-            <td><img src="./assets/2023-BMW-3-Series-6.webp" alt=""></td>
-            <td>2023 BMW-3 Series 6</td>
-            <td>Sedan</td>
-            <td>BMW's quintessential sports sedan gets a tech-heavy makeover for 2023 that sees updated exterior styling and a dramatic new all-digital dashboard. Keen eyes will notice that this same monolithic display that stretches two-thirds of the 3-series's dashboard is the same design as what you'll find in the brand's flagship 7-series and electric iX SUV. </td>
-            <td>$43,000<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><img src="./assets/land-cruiser-lc-300.webp" alt=""></td>
-            <td>2023 Toyota LC300</td>
+            <td>6</td>
+            <td><img src="./assets/2023-Jeep-Compass.jpg" alt=""></td>
+            <td>2023 Jeep Compass</td>
             <td>SUV</td>
-            <td>The LandCruiser always had a spirit of exploration and discovery backed by an incredible ability to perform in the most rugged conditions the world has on offer. The LandCruiser 300 continues this spirit giving you the performance to get out there and back with confidence.</td>
-            <td>$89,990<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
+            <td>The 2023 Jeep Compass has a new turbocharged 2.0-liter inline-four engine that cranks out 200 hp and 221 lb-ft of torque. This unit is replacing the older 2.4-liter four-cylinder engine with 180 hp and 175 lb-ft of torque. 
+                This is an excellent power bump that should be noticeable behind the wheel. The old engine helped the Compass accelerate from 0 to 60 mph in about 10.1 seconds, which is underwhelming. 
+            </td>
+            <td>$35,745<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>3</td>
-            <td><img src="./assets/2021-MB-Eclass.webp" alt=""></td>
-            <td>2021 Mercedes-Benz E-Class</td>
-            <td>Sedan</td>
-            <td>The E-Class is Mercedes-Benz's well-established and highly regarded midsize offering, a luxurious model available as a 4-door sedan, a station wagon, a 2-door coupe and an open-top cabriolet.</td>
+            <td>7</td>
+            <td><img src="./assets/2022-Toyota-Supra.jpg" alt=""></td>
+            <td>2022 Toyota GR Supra</td>
+            <td>Sports car</td>
+            <td>The GR Supra's legendary performance and power is back for 2022, with the 3.0 and 3.0 Premium grades with a 382 hp 3.0-liter inline six-cylinder engine and the 2.0 grade with a turbocharged 2.0-liter four-cylinder in the 2.0 grade. Additionally, 600 special A91-Carbon Fiber Editions will be produced. The 2022 GR Supra also adds heated seats on the 3.0, full-screen Apple Car Play compatibility and a hot red leather trimmed interior on the 3.0 Premium.</td>
+            <td>$63,280<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><img src="https://hips.hearstapps.com/hmg-prod/images/large-52940-2023ioniq6-1669059842.jpg?crop=0.793xw:0.695xh;0.0863xw,0.216xh&resize=1200:*" alt=""></td>
+            <td>Hyundai Ioniq 6</td>
+            <td>Sedan EV</td>
+            <td>Hyundai is blazing its own trail with the Ioniq 6's design. Its single-curved aerodynamic profile makes the sedan look a little like a smooshed VW Beetle, but it helped the Hyundai achieve a remarkably slippery 0.22 drag coefficient. Details like newly designed front and rear badges, pixel LED lighting, and minimal fender-well wheel gap catch the eye as you scan the outside of the new EV.
+            The cabin uses eco-friendly materials including recycled plastics, recycled fishing net carpets, and leather dyed with flaxseed oil. Variable ambient lighting also makes an impression, with light bouncing off the surface of the door panels in such a way that you can't see the light source.</td>
             <td>$57,800<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>4</td>
-            <td><img src="./assets/Ford-F150-2023.avif" alt=""></td>
-            <td>2023 Ford F-150 Raptor</td>
-            <td>Truck</td>
-            <td>The Ford F-150 Raptor is a SCORE off-road trophy truck living in an asphalt world. It wears extra-wide fenders, long-travel suspension, big tires, and the high-performance demeanor of a Baja-bashing race truck. It even earned a place on our 10Best Trucks and SUVs list for 2023.</td>
-            <td>$109,145<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td><img src="./assets/RR-Sport-2023.avif" alt=""></td>
-            <td>2023 Range Rover Sport</td>
-            <td>SUV</td>
-            <td>Handsome exterior design, high-end interior finishes, agreeable mix of comfort and sport. The latest Range Rover Sport perpetuates the nameplate's luxurious pedigree and adds more modern tech and a fresh look.</td>
-            <td>$121,500<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
+            <td>9</td>
+            <td><img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/108425/sportster-s-right-front-three-quarter.jpeg" alt=""></td>
+            <td>Harley-Davidson Sportster S</td>
+            <td>Cruiser Bike</td>
+            <td>Sportster™ S is the first chapter of a whole new book of the Sportster saga. A legacy born in 1957 that outperformed the competition is now rebuilt to blow away the standards of today.</td>
+            <td>$15,599<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
     </table>
+    <div id="req">
+        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 20px; color: white; padding-top: 40px">Cannot find what you need?</h1>
+        <a href="req_vehicle.php"><button class="req_but">Request for a vehicle</button></a>
+    </div>
     </section>
     <footer class="pages">
         <nav class="footer_nav">
@@ -78,8 +77,6 @@
                 <li><button onclick="window.history.back()">&laquo; Previous</button></li>
                 <li><button onclick="window.location.href='buy.php'">1</button></li>
                 <li><button class="active" onclick="window.location.href='buy-2.php'">2</button></li>
-                <li><button onclick="window.location.href='page3.html'">3</button></li>
-                <li><button onclick="window.location.href='page3.html'">Next &raquo;</button></li>
             </ul>
         </nav>
     </footer>

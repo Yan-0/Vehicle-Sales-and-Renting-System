@@ -43,7 +43,7 @@
     </header>
     <section class="all">
         <div id="form">
-            <h1 class="log">Login</h1>
+            <h1 class="log">Register</h1>
                 <form action="" method="POST" name="login_form" enctype="multipart/form-data">
                     <?php
                         if(isset($error)){
@@ -58,10 +58,45 @@
                     <p><input required type="text" placeholder="Full Name" name="fullname" class="fin"></p>
                     <p><input required type="text" placeholder="Phone" name="phone" class="fin"></p>
                     <p><input required type="text" placeholder="Address" name="address" class="fin"></p>
-                    <button type="submit" class="but" name="sub">Register</button>
+                    <button type="submit" class="but" name="sub" onclick = "valid()">Register</button>
                     <p class="new">Already have an account? <a href="./login.php#form">Log in</a></p>
                 </form>
         </div>
-    </section>       
+    </section>
+    <script>
+        function valid(){
+            username = document.login_form.nUser.value;
+            var alphaExp = /^[a-zA-z]+$/;
+
+            phone = document.login_form.phone.value;
+            var phNum = /^98[0-9]{8}$/;
+
+            pass = document.login_form.nPass.value;
+
+            email = document.login_form.email.value;
+            var mailformat = /^\w+([\.]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})+$/;
+
+
+            if(!email.match(mailformat)){
+                alert("Enter valid email");
+                return false;
+            }
+            if (!username.match(alphaExp) || username == "") {
+                alert("Enter valid username");
+                return false;
+            }
+
+            if(pass == "" || pass.length < 8){
+                alert("Enter vaild password");
+                return false;
+            }
+
+            if(!phone.match(phNum)){
+                alert("Enter valid phone number");
+                return false;
+            }
+
+        }
+    </script>
 </body>
 </html>

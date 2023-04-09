@@ -7,16 +7,18 @@
         $country = mysqli_real_escape_string($conn, $_POST['country']);
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
 
-        $select = "SELECT * FROM login WHERE fullname = '$fullname' && email = '$email'";
+        $select = "SELECT * FROM bookings WHERE fullname = '$fullname' && email = '$email'";
 
         $result = mysqli_query($conn, $select);
 
         if(mysqli_num_rows($result) > 0){
             $error[] = 'You already have a booking pending.';
+        }elseif ($country == 0) {
+            $error[] = 'Please select a country.';
         }else{
-            $insert = "INSERT INTO login(fullname, phone, email, address, country) VALUES('$fullname, '$phone', '$email','$address', '$country')";
+            $insert = "INSERT INTO bookings(fullname, phone, email, address, country) VALUES('$fullname', '$phone', '$email', '$address', '$country')";
             mysqli_query($conn, $insert);
-            header('location:successful.php');
+            echo "Booking Successfull";
         }
     }
 ?>
@@ -48,23 +50,45 @@
                         <?php
                             if(isset($error)){
                                 foreach ($error as $error) {
-                                    echo '<span>'.$error.'</span>';
+                                    echo '<span>'.$error.'</span><br>';
                                 }      
                             }
                         ?>
-                        <input required type="text" placeholder="Full Name" name="fullname" class="fin"><br><br>
-                        <input required type="text" placeholder="Phone" name="phone" class="fin"><br><br>
-                        <input required type="text" placeholder="Address" name="address" class="fin"><br><br>
-                        <select name="country" class="fin">
+                        <input required type="text" placeholder="Full Name" name="fullname" class="fin" required><br><br>
+                        <input required type="text" placeholder="Phone" name="phone" class="fin" required><br><br>
+                        <input required type="text" placeholder="Address" name="address" class="fin" required><br><br>
+                        <select name="country" class="fin" required>
                             <option value="0">Select a Country</option>
-                            <option value="1">Nepal</option>
+                            <option value="Nepal">Nepal</option>
                         </select><br><br>
-                        <input required type="email" placeholder="E-mail" name="email" class="fin"><br><br><br><br><br>
-                        <button type="submit" class="but" name="sub">Confirm Booking</button>
+                        <input required type="email" placeholder="E-mail" name="email" class="fin" required><br><br><br><br><br>
+                        <button type="submit" class="but" name="sub" onclick="valid()">Confirm Booking</button>
                         <p class="info1">*We might give you a call to confirm your booking</p>
                         <p class="info2">*Please enter all information correctly.</p>
                     </form>
                 </div>
     </section>
+    <script>
+        function valid(){
+
+            phone = document.login_form.phone.value;
+            var phNum = /^98[0-9]{8}$/;
+
+            email = document.login_form.email.value;
+            var mailformat = /^\w+([\.]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})+$/;
+
+
+            if(!phone.match(phNum)){
+                alert("Enter valid phone number");
+                return false;
+            }
+
+            if(!email.match(mailformat)){
+                alert("Enter valid email");
+                return false;
+            }
+
+        }
+    </script>
 </body>
 </html>

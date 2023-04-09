@@ -16,12 +16,13 @@
             if($row['user_type'] == 'user'){
                 $_SESSION['user_name'] = $row['username'];
                 header('location:user_panel.php');
-            }elseif ($row['user_type'] == 'admin') {
+            }
+            elseif($row['user_type'] == 'admin') {
                 $SESSION['user_name'] = $row['username'];
                 header('location:admin_panel.php');
-            }else {
-            $error[] = 'Invalid Username or Password';
             }
+        }else{
+            $error[] = 'Invalid Username or Password';
         }
     }
 ?>
@@ -47,23 +48,23 @@
         </nav>
     </header>
     <section class="all">
-                <div id="form">
-                    <h1 class="log">Login</h1>
-                    <form action="#" method="POST" name="login_form" enctype="multipart/form-data">
-                    <?php
-                            if(isset($error)){
-                                foreach ($error as $error) {
-                                    echo '<span>'.$error.'</span>';
-                                }      
-                            }
-                        ?>
-                        <p><input required type="text" placeholder="Username" name="uname" class="fin"></p>
-                        <p><input required type="password" placeholder="Password" name="pass" class="fin"></p>
-                        <p class="rem"><input type="checkbox" name="remember" class="check">Remember me</p>
-                        <button type="submit" class="but" name="sub">Sign In</button>
-                        <p class="new">Don't have and account? <a href="./register.php#new_form">Sign up</a></p>
-                    </form>
-                </div>
+        <div id="form">
+            <h1 class="log">Login</h1>
+            <form action="#" method="POST" name="login_form" enctype="multipart/form-data">
+                <?php
+                    if(isset($error)){
+                        foreach ($error as $error) {
+                        echo '<span>'.$error.'</span>';
+                        }      
+                    }
+                ?>
+                <p><input required type="text" placeholder="Username" name="uname" class="fin"></p>
+                <p><input required type="password" placeholder="Password" name="pass" class="fin"></p>
+                <p class="rem"><input type="checkbox" name="remember" class="check">Remember me</p>
+                <button type="submit" class="but" name="sub">Sign In</button>
+                <p class="new">Don't have and account? <a href="./register.php#new_form">Register new account</a></p>
+            </form>
+        </div>
     </section>
 </body>
 </html>

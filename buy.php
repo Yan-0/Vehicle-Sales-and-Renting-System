@@ -18,8 +18,9 @@
             </ul>
         </nav>
     </header>
-    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 20px; color: white;">
+    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 5px; color: white;">
         Let's get you a vehicle</h1>
+        <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 10px; color: white;">Currently we have these in stock</h2>
     <section id="table">
     <table>
         <tr>
@@ -75,10 +76,8 @@
     <footer class="pages">
         <nav class="footer_nav">
             <ul class="footer_ul">
-                <li><button onclick="window.history.back()">&laquo; Previous</button></li>
                 <li><button class="active" onclick="window.location.href='buy.php'">1</button></li>
                 <li><button onclick="window.location.href='buy-2.php'">2</button></li>
-                <li><button onclick="window.location.href='page3.html'">3</button></li>
                 <li><button onclick="window.location.href='buy-2.php'">Next &raquo;</button></li>
             </ul>
         </nav>

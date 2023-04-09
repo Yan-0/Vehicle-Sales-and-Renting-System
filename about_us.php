@@ -46,19 +46,19 @@
           <div class="test_collection">
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="assets/avatar.jpg" alt=""><h5 class=test_name>Shreyan Bhandari</h5>
+                <img class="avatar" src="https://th.bing.com/th/id/OIP.qamtUb0AYx_KVxJkqXFwXgAAAA?pid=ImgDet&rs=1" alt=""><h5 class=test_name>Shreyan Bhandari</h5>
                 <p class="test_text">Loved the customer service. The delivery process was also great.</p>
               </div>
             </div>
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="assets/avatar.jpg" alt=""><h5 class=test_name>Saurav Risal</h5>
+                <img class="avatar" src="https://th.bing.com/th/id/R.a2d5a7a336800b2d55fce251ff77565f?rik=CUwC04IucRZJaw&pid=ImgRaw&r=0" alt=""><h5 class=test_name>Saurav Risal</h5>
                 <p class="test_text">I had bought a Ford F-150 Raptor from Stellar. The experience of buying with them was splendid😄.</p>
               </div>
             </div>
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="assets/avatar.jpg" alt=""><h5 class=test_name>Jubin Karki</h5>
+                <img class="avatar" src="https://th.bing.com/th/id/OIP.Ghu9-qTud324xdCOD8qeewHaHa?pid=ImgDet&rs=1" alt=""><h5 class=test_name>Jubin Karki</h5>
                 <p class="test_text">We rented a SUV for our trip to Pokhara. Our trip went great thanks to Stellar Automobiles.</p>
                 
               </div>
