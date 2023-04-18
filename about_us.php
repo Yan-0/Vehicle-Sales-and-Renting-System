@@ -52,7 +52,7 @@
             </div>
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="https://th.bing.com/th/id/R.a2d5a7a336800b2d55fce251ff77565f?rik=CUwC04IucRZJaw&pid=ImgRaw&r=0" alt=""><h5 class=test_name>Saurav Risal</h5>
+                <img class="avatar" src="https://th.bing.com/th/id/R.a2d5a7a336800b2d55fce251ff77565f?rik=CUwC04IucRZJaw&pid=ImgRaw&r=0" alt=""><h5 class=test_name>Raunak Khadka</h5>
                 <p class="test_text">I had bought a Ford F-150 Raptor from Stellar. The experience of buying with them was splendid😄.</p>
               </div>
             </div>

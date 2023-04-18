@@ -24,15 +24,13 @@
     <section id="table">
     <table>
         <tr>
-            <th>S.N.</th>
-            <th>Image</th>
+            <th></th>
             <th>Model Name</th>
             <th>Vehicle Type</th>
             <th>Vehicle Info</th>
             <th>Price</th>
         </tr>
         <tr>
-            <td>1</td>
             <td><img src="./assets/2023-BMW-3-Series-6.webp" alt=""></td>
             <td>2023 BMW-3 Series 6</td>
             <td>Sedan</td>
@@ -40,7 +38,6 @@
             <td>$43,000<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>2</td>
             <td><img src="./assets/land-cruiser-lc-300.webp" alt=""></td>
             <td>2023 Toyota LC300</td>
             <td>SUV</td>
@@ -48,7 +45,6 @@
             <td>$89,990<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>3</td>
             <td><img src="./assets/2021-MB-Eclass.webp" alt=""></td>
             <td>2021 Mercedes-Benz E-Class</td>
             <td>Sedan</td>
@@ -56,7 +52,6 @@
             <td>$57,800<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>4</td>
             <td><img src="./assets/Ford-F150-2023.avif" alt=""></td>
             <td>2023 Ford F-150 Raptor</td>
             <td>Truck</td>
@@ -64,7 +59,6 @@
             <td>$109,145<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>5</td>
             <td><img src="./assets/RR-Sport-2023.avif" alt=""></td>
             <td>2023 Range Rover Sport</td>
             <td>SUV</td>

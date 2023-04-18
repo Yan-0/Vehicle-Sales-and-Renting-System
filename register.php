@@ -17,7 +17,6 @@
         }else{
             $insert = "INSERT INTO login(email, username, password, phone, fullname, address) VALUES('$email','$uname', '$pass', '$phone', '$fname', '$address')";
             mysqli_query($conn, $insert);
-            header('location:login.php');
         }
     }
 ?>
@@ -50,6 +49,9 @@
                             foreach ($error as $error) {
                                 echo '<span>'.$error.'</span>';
                             }      
+                        }
+                        if(isset($insert)){
+                            echo '<span style = "background: green;">'."Registration Successful".'</span>';
                         }
                     ?>
                     <p><input required type="email" placeholder="E-mail" name="email" class="fin"></p>

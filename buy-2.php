@@ -23,15 +23,13 @@
     <section id="table">
     <table>
         <tr>
-            <th>S.N.</th>
-            <th>Image</th>
+            <th></th>
             <th>Model Name</th>
             <th>Vehicle Type</th>
             <th>Vehicle Info</th>
             <th>Price</th>
         </tr>
         <tr>
-            <td>6</td>
             <td><img src="./assets/2023-Jeep-Compass.jpg" alt=""></td>
             <td>2023 Jeep Compass</td>
             <td>SUV</td>
@@ -41,7 +39,6 @@
             <td>$35,745<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>7</td>
             <td><img src="./assets/2022-Toyota-Supra.jpg" alt=""></td>
             <td>2022 Toyota GR Supra</td>
             <td>Sports car</td>
@@ -49,7 +46,6 @@
             <td>$63,280<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>8</td>
             <td><img src="https://hips.hearstapps.com/hmg-prod/images/large-52940-2023ioniq6-1669059842.jpg?crop=0.793xw:0.695xh;0.0863xw,0.216xh&resize=1200:*" alt=""></td>
             <td>Hyundai Ioniq 6</td>
             <td>Sedan EV</td>
@@ -58,7 +54,6 @@
             <td>$57,800<br><br><a href="booking.php"><button class="booking">Book now</button></a></td>
         </tr>
         <tr>
-            <td>9</td>
             <td><img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/108425/sportster-s-right-front-three-quarter.jpeg" alt=""></td>
             <td>Harley-Davidson Sportster S</td>
             <td>Cruiser Bike</td>

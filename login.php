@@ -62,7 +62,7 @@
                 <p><input required type="password" placeholder="Password" name="pass" class="fin"></p>
                 <p class="rem"><input type="checkbox" name="remember" class="check">Remember me</p>
                 <button type="submit" class="but" name="sub">Sign In</button>
-                <p class="new">Don't have and account? <a href="./register.php#new_form">Register new account</a></p>
+                <p class="new">Don't have an account? <a href="./register.php#new_form">Register new account</a></p>
             </form>
         </div>
     </section>
