@@ -6,17 +6,16 @@
         $address = mysqli_real_escape_string($conn, $_POST['address']);
         $country = mysqli_real_escape_string($conn, $_POST['country']);
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+        $vehicle_booked = mysqli_real_escape_string($conn, $_GET['name']);
 
-        $select = "SELECT * FROM bookings WHERE fullname = '$fullname' && email = '$email'";
+        $select = "SELECT * FROM booking WHERE booked_by = '$fullname' && email = '$email' && booked_vehicle = '$vehicle_booked'";
 
         $result = mysqli_query($conn, $select);
 
         if(mysqli_num_rows($result) > 0){
-            $error[] = 'You already have a booking pending.';
-        }elseif ($country == 0) {
-            $error[] = 'Please select a country.';
+            $error[] = 'You already have the same booking pending.';
         }else{
-            $insert = "INSERT INTO bookings(fullname, phone, email, address, country) VALUES('$fullname', '$phone', '$email', '$address', '$country')";
+            $insert = "INSERT INTO booking(booked_by, phone, email, address, country, booked_vehicle) VALUES('$fullname', '$phone', '$email', '$address', '$country', '$vehicle_booked')";
             mysqli_query($conn, $insert);
         }
     }
@@ -83,18 +82,19 @@
     </header>
     <section class="all">
                 <div id="booking_form">
-                    <h1 class="log">Enter your credentials</h1>
-                    <form action="" method="POST" name="login_form" enctype="multipart/form-data">
-                        <?php
+                    <h1 class="log">Enter your credentials<br>
+                    <?php
                             if(isset($error)){
                                 foreach ($error as $error) {
                                     echo '<span>'.$error.'</span><br>';
                                 }      
                             }
                             if(isset($insert)){
-                                echo '<span style = "background: green;">'."Registration Successful".'</span><br>';
+                                echo '<span style = "background: green; margin-bottom: 20px;">'."Booking Successful".'</span><br>';
                             }
                         ?>
+                    </h1>
+                    <form action="" method="POST" name="booking_form" enctype="multipart/form-data">
                         <input required type="text" placeholder="Full Name" name="fullname" class="fin" required><br><br>
                         <input required type="text" placeholder="Phone" name="phone" class="fin" required><br><br>
                         <input required type="text" placeholder="Address" name="address" class="fin" required><br><br>
@@ -117,15 +117,37 @@
     <script>
         function valid(){
 
-            phone = document.login_form.phone.value;
+            fullname = document.booking_form.fullname.value;
+
+            address = document.booking_form.address.value;
+
+            phone = document.booking_form.phone.value;
             var phNum = /^98[0-9]{8}$/;
 
-            email = document.login_form.email.value;
+            email = document.booking_form.email.value;
             var mailformat = /^\w+([\.]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})+$/;
 
+            country = document.booking_form.country.value;
+
+
+
+            if (fullname == "") {
+                alert("Please dont leave any field empty.");
+                return false;
+            }
 
             if(!phone.match(phNum)){
                 alert("Enter valid phone number");
+                return false;
+            }
+
+            if (address == "") {
+                alert("Please dont leave any field empty.");
+                return false;
+            }
+
+            if(country == 0){
+                alert("Please select a country");
                 return false;
             }
 
@@ -135,50 +157,6 @@
             }
 
         }
-
-        // function GetDetail(str) {
-        //     if (str.length == 0) {
-        //         document.getElementById("first_name").value = "";
-        //         document.getElementById("last_name").value = "";
-        //         return;
-        //     }
-        //     else {
-  
-        //         // Creates a new XMLHttpRequest object
-        //         var xmlhttp = new XMLHttpRequest();
-        //         xmlhttp.onreadystatechange = function () {
-  
-        //             // Defines a function to be called when
-        //             // the readyState property changes
-        //             if (this.readyState == 4 && 
-        //                     this.status == 200) {
-                          
-        //                 // Typical action to be performed
-        //                 // when the document is ready
-        //                 var myObj = JSON.parse(this.responseText);
-  
-        //                 // Returns the response data as a
-        //                 // string and store this array in
-        //                 // a variable assign the value 
-        //                 // received to first name input field
-                          
-        //                 document.getElementById
-        //                     ("first_name").value = myObj[0];
-                          
-        //                 // Assign the value received to
-        //                 // last name input field
-        //                 document.getElementById(
-        //                     "last_name").value = myObj[1];
-        //             }
-        //         };
-  
-        //         // xhttp.open("GET", "filename", true);
-        //         xmlhttp.open("GET", "gfg.php?user_id=" + str, true);
-                  
-        //         // Sends the request to the server
-        //         xmlhttp.send();
-        //     }
-        // }
     </script>
 </body>
 </html>

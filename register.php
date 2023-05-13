@@ -41,7 +41,7 @@
     </header>
     <section class="all">
         <div id="form">
-            <h1 class="log">Register</h1>
+            <h1 class="log">Register an Account</h1>
                 <form action="" method="POST" name="login_form" enctype="multipart/form-data">
                     <?php
                         if(isset($error)){
@@ -68,34 +68,39 @@
 
             fullname = document.login_form.fullname.value;
 
+            address = document.login_form.address.value;
+
             phone = document.login_form.phone.value;
             var phNum = /^98[0-9]{8}$/;
 
             pass = document.login_form.nPass.value;
 
             email = document.login_form.email.value;
-            var mailformat = /^\w+([\.]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})+$/;
+            var mailformat = /^\w+([\.]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})$/;
 
-            if (fullname == "") {
-                alert("Please dont leave any field empty.");
-            }
 
             if(!email.match(mailformat)){
                 alert("Enter valid email");
                 return false;
             }
-            if (!username.match(alphaExp) || username == "") {
-                alert("Enter valid username");
+
+            if(pass == "" || pass.length < 5){
+                alert("Enter a password with more than 5 characters");
                 return false;
             }
 
-            if(pass == "" || pass.length < 8){
-                alert("Enter vaild password");
+            if (fullname == "") {
+                alert("Please dont leave fullname field empty.");
                 return false;
             }
 
             if(!phone.match(phNum)){
                 alert("Enter valid phone number");
+                return false;
+            }
+
+            if (address == "") {
+                alert("Please dont leave address field empty.");
                 return false;
             }
 

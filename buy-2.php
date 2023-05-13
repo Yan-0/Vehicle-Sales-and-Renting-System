@@ -53,7 +53,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" id="Hyundai_Ioniq6">Book now</button></a>
+                <a href="booking.php?name=Hyundai-Ioniq6"><button class="booking">Book now</button></a>
             </div>
         </div>
     </section>
@@ -73,7 +73,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" id="HarleyDavidson_SprosterS">Book now</button></a>
+                <a href="booking.php?name=Harley-Davidson-SportsterS"><button class="booking">Book now</button></a>
             </div>
         </div>
     </section>

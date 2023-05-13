@@ -67,7 +67,7 @@
                 echo '<span style = "background: green; text-align: center;">'."Your request has been registered successfully".'</span>';
             }
             ?>
-        <form class="border" method="POST">
+        <form class="border" name="request" method="POST">
             <label class=label1>Vehicle Brand</label>
             <input class="brand" name="brand" type="text" placeholder="Eg: Ford" required>
             <label class=label2>Vehicle Model</label>
@@ -81,10 +81,33 @@
                 <option value="2023">2023</option>
             </select>
             <label class=label_color for="vehicle_color">Vehicle Color</label>
-            <input type="text" name="vehicle_color" id="veh_color" placeholder="Specify color of the vehicle">
+            <input type="text" name="vehicle_color" id="veh_color" placeholder="Specify color of the vehicle" required>
             <input type="text" name="req_by" value="<?php echo $login_session;?>" /hidden>
-            <input class="req_sub" name="sub" type="submit" value="Confirm">
+            <input class="req_sub" name="sub" type="submit" onclick="valid()" value="Confirm">
         </form>
     </section>
+
+    <script>
+        function valid(){
+            brand = document.request.brand.value;
+            model = document.request.model.value;
+            color = document.request.vehicle_color.value;
+
+            if (brand == "") {
+                alert("Dont leave any fields empty");
+                return false;
+            }
+
+            if (model == "") {
+                alert("Dont leave any fields empty");
+                return false;
+            }
+
+            if (color == "") {
+                alert("Dont leave any fields empty");
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

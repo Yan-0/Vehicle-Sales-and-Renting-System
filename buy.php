@@ -57,7 +57,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" name="BMW_Series_6">Book now</button></a>
+                <a href="booking.php?name=BMW-Series-6"><button class="booking">Book now</button></a>
             </div>
         </div>
     </section>
@@ -77,7 +77,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" name="Toyota_LC300">Book now</button></a>
+                <a href="booking.php?name=Toyota-LC300"><button class="booking">Book now</button></a>
                 <br><br>
             </div>
         </div>
@@ -98,7 +98,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" name="Mercedes_EClass">Book now</button></a>
+                <a href="booking.php?name=Mercedes-E-Class"><button class="booking">Book now</button></a>
             </div>
         </div>
     </section>
@@ -118,7 +118,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" name="Ford_F150">Book now</button></a>
+                <a href="booking.php?name=Ford-F150"><button class="booking">Book now</button></a>
             </div>
         </div>
     </section>
@@ -138,7 +138,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><button class="booking" name="Jeep_Compass">Book now</button></a>
+                <a href="booking.php?name=Jeep-Compass"><button class="booking">Book now</button></a>
             </div>
         </div>
     </section>
@@ -158,7 +158,7 @@ include './config.php';
 
                         }}
                 ?>
-                <a href="booking.php"><input type="submit" class="booking" name="Toyota_GR_Supra" value="Book now"></button></a>
+                <a href="booking.php?name=Toyota-GR-Supra"><button class="booking">Book now</button></a>
                 <br><br>
             </div>
         </div>

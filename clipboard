@@ -4,3 +4,6 @@ if($row['user_type'] == 'user'{
                                 header('location:admin_panel.php');
                             }
                         })
+
+
+account settings is updating password even if empty.

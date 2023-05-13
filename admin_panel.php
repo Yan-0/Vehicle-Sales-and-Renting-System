@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +12,8 @@
         <a class="logo-all" href="welcome.php"><img class="logo" src="./assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
         <nav>
             <ul>
-                <li><a href="admin_panel.php" class="active">Admin Panel</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="admin_panel.php" class="active">Admin Dashboard</a></li>
                 <li><a href="./logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -82,6 +83,21 @@
                 Listed Vehicles
                 </div>
             </button>
+            <button class="func_button">
+                <div class="func_count">
+                <?php 
+                    $sql = "SELECT COUNT(request_id) FROM vehicle_requested";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>" . $row['COUNT(request_id)'] . "</h1>";
+                    }}
+                ?>
+                Requested Vehicles
+                </div>
+            </button>
+
         </div>
       </section>
 </body>
