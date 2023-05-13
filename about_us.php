@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="style.css">
+    <script src="dropdown.js"></script>
 </head>
 <body>
     <header>
@@ -14,7 +15,20 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php" class="active">About</a></li>
-                <li><a href="login.php">Login</a></li>
+                <?php
+                    session_start();
+                    if(!isset($_SESSION['login_user'])){
+                        echo "<a href='login.php'>Login</a>";
+                    }else {
+                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
+                        <div id='myDropdown' class='dropdown-content'>
+                        <a href='user_panel.php'>Account Settings</a>
+                        <a href='logout.php'>Logout</a>
+                        </div>
+                        </div>"
+                        ;
+                    }
+                ?>
             </ul>
         </nav>
     </header>
@@ -46,19 +60,19 @@
           <div class="test_collection">
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="https://th.bing.com/th/id/OIP.qamtUb0AYx_KVxJkqXFwXgAAAA?pid=ImgDet&rs=1" alt=""><h5 class=test_name>Shreyan Bhandari</h5>
+                <img class="avatar" src="./assets/avatar1.jpg" alt=""><h5 class=test_name>Shreyan Bhandari</h5>
                 <p class="test_text">Loved the customer service. The delivery process was also great.</p>
               </div>
             </div>
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="https://th.bing.com/th/id/R.a2d5a7a336800b2d55fce251ff77565f?rik=CUwC04IucRZJaw&pid=ImgRaw&r=0" alt=""><h5 class=test_name>Raunak Khadka</h5>
+                <img class="avatar" src="./assets/avatar2.jpg" alt=""><h5 class=test_name>Raunak Khadka</h5>
                 <p class="test_text">I had bought a Ford F-150 Raptor from Stellar. The experience of buying with them was splendid😄.</p>
               </div>
             </div>
             <div class="padding">
               <div class="test">
-                <img class="avatar" src="https://th.bing.com/th/id/OIP.Ghu9-qTud324xdCOD8qeewHaHa?pid=ImgDet&rs=1" alt=""><h5 class=test_name>Jubin Karki</h5>
+                <img class="avatar" src="./assets/avatar3.jpg" alt=""><h5 class=test_name>Jubin Karki</h5>
                 <p class="test_text">We rented a SUV for our trip to Pokhara. Our trip went great thanks to Stellar Automobiles.</p>
                 
               </div>

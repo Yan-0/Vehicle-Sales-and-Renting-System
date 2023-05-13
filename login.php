@@ -5,24 +5,24 @@
         $uname = mysqli_real_escape_string($conn, $_POST['uname']);
         $pass = md5($_POST['pass']);
 
-        $select = "SELECT * FROM login WHERE username = '$uname'";
+        $select = "SELECT * FROM user WHERE email = '$uname' or phone = '$uname' and password = '$pass'";
 
         $result = mysqli_query($conn, $select);
 
         if(mysqli_num_rows($result) > 0){
-            
+
             $row = mysqli_fetch_array($result);
 
             if($row['user_type'] == 'user'){
-                $_SESSION['user_name'] = $row['username'];
-                header('location:user_panel.php');
+                $_SESSION['login_user'] = $row['fullname'];
+                header('location:index.php');
             }
             elseif($row['user_type'] == 'admin') {
-                $SESSION['user_name'] = $row['username'];
-                header('location:admin_panel.php');
+                $_SESSION['login_user'] = $row['fullname'];
+                header('location:index.php');
             }
         }else{
-            $error[] = 'Invalid Username or Password';
+            $error[] = 'Invalid E-mail or Password';
         }
     }
 ?>
@@ -58,7 +58,7 @@
                         }      
                     }
                 ?>
-                <p><input required type="text" placeholder="Username" name="uname" class="fin"></p>
+                <p><input required type="text" placeholder="E-mail or Phone" name="uname" class="fin"></p>
                 <p><input required type="password" placeholder="Password" name="pass" class="fin"></p>
                 <p class="rem"><input type="checkbox" name="remember" class="check">Remember me</p>
                 <button type="submit" class="but" name="sub">Sign In</button>

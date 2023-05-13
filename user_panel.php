@@ -13,43 +13,38 @@
         <nav>
             <ul>
                 <li><a href="user_panel.php" class="active">User Panel</a></li>
-                <li><a href="login.php">Logout</a></li>
+                <li><a href="./logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
     <div id="main">
       <section id="billboard">
+      <div id="greeting">Welcome, 
+            <?php
+                include('session.php');
+                echo $login_session;
+            ?>
+        </div>
         <div class="function">
             <button class="func_button">
                 <div class="func_count">
-                <!-- <?php
-                // include "./config.php";
-                // $count = "SELECT COUNT(id) FROM login";
-                // if ($count >= 0) {
-                //     return $count;
-                // }
-                ?> -->
                 My Bookings
                 </div>
-                <a href="#">See details>></a>
             </button>
             <button class="func_button">
                 <div class="func_count">
                 Booking History
                 </div>
-                <a href="#">See details>></a>
             </button>
             <button class="func_button">
                 <div class="func_count">
                 Rental History
                 </div>
-                <a href="#">See details>></a>
             </button>
             <button class="func_button">
                 <div class="func_count">
                 Account Settings
                 </div>
-                <a href="#">See details>></a>
             </button>
         </div>
       </section>

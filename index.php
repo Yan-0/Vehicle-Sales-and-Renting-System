@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Automobiles</title>
     <link rel="stylesheet" href="style.css">
+    <script src="dropdown.js"></script>
 </head>
 <body>
     <header>
@@ -14,7 +15,20 @@
             <ul>
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
-                <li><a href="login.php">Login</a></li>
+                <?php
+                    session_start();
+                    if(!isset($_SESSION['login_user'])){
+                        echo "<a href='login.php'>Login</a>";
+                    }else {
+                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
+                        <div id='myDropdown' class='dropdown-content'>
+                        <a href='admin_panel.php'>Account Settings</a>
+                        <a href='logout.php'>Logout</a>
+                        </div>
+                        </div>"
+                        ;
+                    }
+                ?>
             </ul>
         </nav>
     </header>

@@ -1,0 +1,6 @@
+if($row['user_type'] == 'user'{
+                                header('location:user_panel.php');
+                            else{
+                                header('location:admin_panel.php');
+                            }
+                        })

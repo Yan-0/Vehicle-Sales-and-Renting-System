@@ -13,43 +13,74 @@
         <nav>
             <ul>
                 <li><a href="admin_panel.php" class="active">Admin Panel</a></li>
-                <li><a href="login.php">Logout</a></li>
+                <li><a href="./logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
     <div id="main">
       <section id="billboard">
+        <div id="greeting">Welcome, 
+            <?php
+                include('session.php');
+                echo $login_session;
+            ?>
+        </div>
         <div class="function">
             <button class="func_button">
                 <div class="func_count">
-                <!-- <?php
-                // include "./config.php";
-                // $count = "SELECT COUNT(id) FROM login";
-                // if ($count >= 0) {
-                //     return $count;
-                // }
-                ?> -->
+                <?php 
+                    $sql = "SELECT COUNT(fullname) FROM user";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>" . $row['COUNT(fullname)'] . "</h1>";
+                    }}
+                ?>
                 Registered Users
                 </div>
-                <a href="#">See details>></a>
             </button>
             <button class="func_button">
                 <div class="func_count">
-                Listed Vehicles
-                </div>
-                <a href="#">See details>></a>
-            </button>
-            <button class="func_button">
-                <div class="func_count">
+                <?php 
+                    $sql = "SELECT COUNT(booked_by) FROM booking";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>" . $row['COUNT(booked_by)'] . "</h1>";
+                    }}
+                ?>
                 Total Bookings
                 </div>
-                <a href="#">See details>></a>
             </button>
             <button class="func_button">
                 <div class="func_count">
+                <?php 
+                    $sql = "SELECT COUNT(id) FROM rental";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>" . $row['COUNT(id)'] . "</h1>";
+                    }}
+                ?>
                 Total Rentals
                 </div>
-                <a href="#">See details>></a>
+            </button>
+            <button class="func_button">
+                <div class="func_count">
+                <?php 
+                    $sql = "SELECT COUNT(vehicle_model) FROM vehicles";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>" . $row['COUNT(vehicle_model)'] . "</h1>";
+                    }}
+                ?>
+                Listed Vehicles
+                </div>
             </button>
         </div>
       </section>

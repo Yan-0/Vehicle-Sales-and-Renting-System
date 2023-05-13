@@ -2,20 +2,19 @@
     include "./config.php";
     if (isset($_POST['sub'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $uname = mysqli_real_escape_string($conn, $_POST['nUser']);
         $pass = md5($_POST['nPass']);
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
         $fname = mysqli_real_escape_string($conn, $_POST['fullname']);
         $address = mysqli_real_escape_string($conn, $_POST['address']);
 
-        $select = "SELECT * FROM login WHERE username = '$uname' && email = '$email'";
+        $select = "SELECT * FROM user WHERE phone = '$phone' && email = '$email'";
 
         $result = mysqli_query($conn, $select);
 
         if(mysqli_num_rows($result) > 0){
             $error[] = 'User already exists';
         }else{
-            $insert = "INSERT INTO login(email, username, password, phone, fullname, address) VALUES('$email','$uname', '$pass', '$phone', '$fname', '$address')";
+            $insert = "INSERT INTO user(email, password, phone, fullname, address) VALUES('$email', '$pass', '$phone', '$fname', '$address')";
             mysqli_query($conn, $insert);
         }
     }
@@ -55,11 +54,10 @@
                         }
                     ?>
                     <p><input required type="email" placeholder="E-mail" name="email" class="fin"></p>
-                    <p><input required type="text" placeholder="Username" name="nUser" class="fin"></p>
                     <p><input required type="password" placeholder="Password" name="nPass" class="fin"></p>
                     <p><input required type="text" placeholder="Full Name" name="fullname" class="fin"></p>
                     <p><input required type="text" placeholder="Phone" name="phone" class="fin"></p>
-                    <p><input required type="text" placeholder="Address" name="address" class="fin"></p>
+                    <p><input required type="text" placeholder="Address" name="address" class="fin" id="padd"></p>
                     <button type="submit" class="but" name="sub" onclick = "valid()">Register</button>
                     <p class="new">Already have an account? <a href="./login.php#form">Log in</a></p>
                 </form>
@@ -67,8 +65,8 @@
     </section>
     <script>
         function valid(){
-            username = document.login_form.nUser.value;
-            var alphaExp = /^[a-zA-z]+$/;
+
+            fullname = document.login_form.fullname.value;
 
             phone = document.login_form.phone.value;
             var phNum = /^98[0-9]{8}$/;
@@ -78,6 +76,9 @@
             email = document.login_form.email.value;
             var mailformat = /^\w+([\.]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})+$/;
 
+            if (fullname == "") {
+                alert("Please dont leave any field empty.");
+            }
 
             if(!email.match(mailformat)){
                 alert("Enter valid email");

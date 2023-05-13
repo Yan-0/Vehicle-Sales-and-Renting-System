@@ -1,6 +1,8 @@
 <?php
     include "./config.php";
+    include "session.php";
     if (isset($_POST['sub'])) {
+        $rented_by = mysqli_real_escape_string($conn, $_POST['rented_by']);
         $pickup = mysqli_real_escape_string($conn, $_POST['pickup']);
         $dropoff = mysqli_real_escape_string($conn, $_POST['dropoff']);
         $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle']);
@@ -8,10 +10,15 @@
         $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
         $end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
 
+        $select = "SELECT * FROM rental WHERE rented_by = '$rented_by'";
+        $result = mysqli_query($conn, $select);
 
-        $insert = "INSERT INTO rental(pickup_loc, dropoff_loc, vehicle_type, duration, start_date, end_date) VALUES('$pickup','$dropoff', '$vehicle_type', '$duration', '$start_date', '$end_date')";
-        mysqli_query($conn, $insert);
-        header('location:login.php');
+        if(mysqli_num_rows($result) > 0){
+            $error[] = 'You already have a rental request pending';
+        }else{
+            $insert = "INSERT INTO rental(rented_by, pickup_loc, dropoff_loc, vehicle_type, duration, start_date, end_date) VALUES('$rented_by','$pickup','$dropoff', '$vehicle_type', '$duration', '$start_date', '$end_date')";
+            mysqli_query($conn, $insert);
+        }
         
     }
 ?>
@@ -23,6 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="dropdown.js"></script>
     <title>Rent a vehicle</title>
 </head>
 <body>
@@ -32,13 +40,35 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
-                <li><a href="login.php">Login</a></li>
+                <?php
+                    if(!isset($_SESSION['login_user'])){
+                        echo "<a href='login.php'>Login</a>";
+                    }else {
+                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
+                        <div id='myDropdown' class='dropdown-content'>
+                        <a href='user_panel.php'>Account Settings</a>
+                        <a href='logout.php'>Logout</a>
+                        </div>
+                        </div>"
+                        ;
+                    }
+                ?>
             </ul>
         </nav>
     </header>
     <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 20px; color: white;">
         Where do you feel like going today?</h1>
     <section id="rent">
+    <?php
+            if(isset($error)){
+                foreach ($error as $error) {
+                    echo '<span style="text-align: center;">'.$error.'</span>';
+                }      
+            }
+            if(isset($insert)){
+                echo '<span style = "background: green; text-align: center;">'."Your request has been registered successfully".'</span>';
+            }
+            ?>
         <form class="border" method="POST">
             <label class=label1>Pick-up location</label>
             <input class="pickup_loc" name="pickup" type="text" placeholder="What's your pick-up city or airport?" required>
@@ -57,9 +87,11 @@
             <input id="datetime1" name="start_date" type="datetime-local" required>
             <label class=label6 for="datetime2">Drop-off date and time</label>
             <input id="datetime2" name="end_date" type="datetime-local" required>
+            <input type="text" name="rented_by" value="<?php echo $login_session;?>" /hidden>
             <input class="rent_sub" name="sub" type="submit" value="Confirm">
         </form>
     </section>
+
     <script>
         function calculateDifference() {
          var datetime1 = new Date(document.getElementById("datetime1").value);

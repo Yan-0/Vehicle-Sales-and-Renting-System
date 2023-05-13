@@ -30,7 +30,7 @@ header{
 }
 
 header > nav > ul > li{
-    padding: 5px;
+    padding: 6px;
 }
 
 .logo-all{
@@ -46,7 +46,6 @@ header > nav > ul > li{
 
 nav{
     width: 80%;
-    border-radius: 15px;
 }
 
 nav a{
@@ -68,6 +67,58 @@ nav a.active{
     background: darkcyan;
 }
 
+/* Dropdown Button */
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 5px 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+  }
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus, .dropdown:hover {
+    opacity: 100%;
+    border: solid 1px;
+    border-radius: 15px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    opacity: 80%;
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    border-radius: 15px;
+    border: solid 1px white;
+    position: absolute;
+    background-color: #0b385f;
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: rgba(0, 0, 0, 0.200);
+    border: none;
+ }
+  
+  /* Show the dropdown menu */
+  .show {display:block;}
 
 ul{
     list-style: none;
@@ -123,13 +174,13 @@ a{
 }
 
 .option img{
-    width: 50%;
+    width: 55%;
     border-radius: 15px 15px 0px 0px;
 
 }
 
 .option button{
-    width: 50%;
+    width: 55%;
     height: 20%;
     border-radius: 0px 0px 15px 15px;
 }
@@ -164,40 +215,45 @@ a{
 
 /*Purchase Screen*/
 
-#table{
+.grid_view{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.table{
     background: rgba(0, 0, 0, 0.224);
+    border-radius: 15px;
+    margin: 5px;
 }
 
-table{
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    border: 1px solid;
-}
-
-th{
-    border-left: 1px solid ;
-    padding: 5px;
-}
-
-th:nth-child(1),
-td:nth-child(1){
-    border-left: none
-}
-
-td{
-    border-left: solid 1px;
-    border-top: solid 1px;
+.card{
+    display: flex;
     padding: 10px;
 }
 
-table img{
-    width: 80%;
+.card img{
+    width: 55%;
+    height: 210px;
+    border-radius: 15px;
 }
+
+.details{
+    padding-left: 1rem;
+}
+
+.details h1, h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+}
+
 
 .booking{
     cursor: pointer;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: none;
 }
 
 #req{
@@ -337,7 +393,7 @@ label{
 
 /*Req Vehicle Screen*/
 
-.dropoff, .pickup_loc, #veh_color{
+.model, .brand, #veh_color{
     height: 2rem;
     width: 80%;
     border: none;
@@ -345,7 +401,7 @@ label{
     border-radius: 5px;
 }
 
-.vehicle_type{
+.build_year{
     height: 2.5rem;
     width: 82%;
     border: none;
@@ -358,7 +414,7 @@ label{
     grid-column: 1;
 }
 
-.pickup_loc{
+.brand{
     grid-row: 2;
     grid-column: 1;
 }
@@ -368,7 +424,7 @@ label{
     grid-column: 2;
 }
 
-.dropoff{
+.model{
     grid-row: 2;
     grid-column: 2;
 }
@@ -521,7 +577,6 @@ form .fin{
 
 span{
     margin: 10px 0;
-    display: inline-block;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: crimson;
     color: white;
@@ -538,6 +593,10 @@ span{
 
 .new > a{
     color: cyan;
+}
+
+#padd{
+    margin-bottom: 20px;
 }
 
 /*Login Page end*/
@@ -595,14 +654,20 @@ span{
 
 /*Pages section End*/
 
-/*Admin Panel Start*/
+/*Admin/User Panel Start*/
+
+#greeting{
+    padding: 30px;
+    display: flex;
+    font-size: larger;
+}
 
 .function{
     display: grid;
     justify-content: space-between;
     justify-items: center;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto;
 }
 
 .func_button{
@@ -612,10 +677,11 @@ span{
     color: white;
     font-size: medium;
     align-items: center;
-    background-color: rgba(32, 178, 170, 0.7);
-    border-radius: 15px;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    border-radius: 20px;
     border: none;
-    padding: 15px;
+    padding: 10px;
+    margin: 15px;
 }
 
 .func_button a{
@@ -625,8 +691,65 @@ span{
 
 .func_count{
     padding: 60px;
-    border-bottom: solid 1px;
 }
 
 
-/*Admin Panel End*/
+/*Admin/User Panel End*/
+
+/*Add vehicle screen*/
+
+.label_image{
+    grid-row: 6;
+    grid-column: 2;
+
+}
+
+#veh_image{
+    grid-row: 7;
+    grid-column: 2;
+    color: white;
+    width: 60%;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.make_year{
+    grid-row: 5;
+    grid-column: 2;
+    height: 2.5rem;
+    width: 82%;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.label_make{
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.sub_button{
+    margin-top: 80px;
+    height: 3rem;
+    width: 80%;
+    cursor: pointer;
+    grid-column: 2;
+    grid-row: 8;
+    border: none;
+    border-radius: 8px;
+}
+
+.label_price{
+    grid-row: 4;
+    grid-column: 3;
+}
+
+.av_price{
+    grid-row: 5;
+    grid-column: 3;
+    height: 2rem;
+    width: 80%;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
