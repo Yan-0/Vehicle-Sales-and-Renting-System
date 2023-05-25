@@ -1,5 +1,5 @@
 <?php
-    include "./config.php";
+    include "widgets/config.php";
     if (isset($_POST['sub'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
@@ -64,18 +64,8 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
                 <?php
-                    session_start();
-                    if(!isset($_SESSION['login_user'])){
-                        echo "<a href='login.php'>Login</a>";
-                    }else {
-                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
-                        <div id='myDropdown' class='dropdown-content'>
-                        <a href='user_panel.php'>Account Settings</a>
-                        <a href='logout.php'>Logout</a>
-                        </div>
-                        </div>"
-                        ;
-                    }
+                    include 'widgets/logged_in.php';
+                    logged_in();
                 ?>
             </ul>
         </nav>

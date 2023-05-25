@@ -1,9 +1,3 @@
-if($row['user_type'] == 'user'{
-                                header('location:user_panel.php');
-                            else{
-                                header('location:admin_panel.php');
-                            }
-                        })
-
-
-account settings is updating password even if empty.
+-Account settings is updating password even if empty.
+-Must be logged in condition to be set for rental and request.
+-Admin and user panel needs to display data from database in tables for history menu.

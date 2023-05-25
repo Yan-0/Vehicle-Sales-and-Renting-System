@@ -1,58 +1,45 @@
 <?php
-    include "./config.php";
-    // File upload path
-    $targetDir = "uploads/";
+    include "widgets/config.php";
 
-    if(isset($_POST["sub"])){
-        $target_dir = "uploads/"; //  /to give filepath
-        $target_file = $target_dir.basename($_FILES["fileUpload"]["name"]);
-        $uploadOk = 1; //flag to check error
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    if (isset($_POST['sub'])) {
+		$brand = mysqli_real_escape_string($conn, $_POST['brand']);
+        $model = mysqli_real_escape_string($conn, $_POST['model']);
+        $year = mysqli_real_escape_string($conn, $_POST['make_year']);
+        $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
+        $price = mysqli_real_escape_string($conn, $_POST['price']);
+        $color = mysqli_real_escape_string($conn, $_POST['color']);
 
-            // Check if file already exists
-            if(file_exists($target_file)){
-                echo"Sorry, file already exists.";
-                $uploadOk = 0;
-            }
-            //Check file size
-            if($_FILES["fileUpload"]["size"] > 50000000000){
-                echo "Sorry, your file is too large.";
-                $uploadOk = 0;
-            }
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType !="png"
-                && $imageFileType !="jpeg" && $imageFileType != "gif" && $imageFileType != "dng"){
-                    echo "Only JPG, JPEG, PNG, DNG & GIF files are allowed.";
-                    $uploadOk = 0;
-            }
+		$target_dir = "uploads/";
+		$a = $_FILES["image"]["name"];
+		$target_file = $target_dir . $a;
+		if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+			$image = $_FILES['image']['name'];
+		}
+		$sql = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price, image_name)
+		VALUES ('$brand $model','$year', '$color', '$vehicle_type', '$price', '$a')";
+		if (mysqli_query($conn, $sql)) {
+    		$message = "New vehicle inserted successfully";
+		} 
+		else {
+    	    $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+	    
+		
+	}
 
-            // Check if $uploadOk is set to 0 by an error
-            if($uploadOk = 0){
-                echo"Sorry, your file was not uploaded.";
-                //if everything is ok, try upload file
-            }else{
-                if(move_uploaded_file($_FILES["fileUpload"]["tmp_name"],$target_file)){
-                    echo "The file ".basename($_FILES["fileUpload"]["name"]). "has been uploaded";
-                }else{
-                    echo "Sorry, there was an error.";
-                }
-            }
-
-        }
-
-        if (isset($_POST['sub'])) {
-            $brand = mysqli_real_escape_string($conn, $_POST['brand']);
-            $model = mysqli_real_escape_string($conn, $_POST['model']);
-            $year = mysqli_real_escape_string($conn, $_POST['make_year']);
-            $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
-            $price = mysqli_real_escape_string($conn, $_POST['price']);
-            $color = mysqli_real_escape_string($conn, $_POST['color']);
+    //     if (isset($_POST['sub'])) {
+    //         $brand = mysqli_real_escape_string($conn, $_POST['brand']);
+    //         $model = mysqli_real_escape_string($conn, $_POST['model']);
+    //         $year = mysqli_real_escape_string($conn, $_POST['make_year']);
+    //         $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
+    //         $price = mysqli_real_escape_string($conn, $_POST['price']);
+    //         $color = mysqli_real_escape_string($conn, $_POST['color']);
 
 
-            $insert = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price) VALUES('$brand $model','$year', '$color', '$vehicle_type', '$price')";
-            mysqli_query($conn, $insert);
+    //         $insert = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price) VALUES('$brand $model','$year', '$color', '$vehicle_type', '$price')";
+    //         mysqli_query($conn, $insert);
 
-    }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +50,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Listed vehicles</title>
+    <style type="text/css">
+		.error{
+			color: red;
+			display: block;
+		}
+	</style>
 </head>
 <body>
     <header>
@@ -76,8 +69,19 @@
         </nav>
     </header>
     <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 20px; color: white;">
-        Adding a vehicle</h1>
+        Adding a vehicle
+    </h1>
     <section id="rent">
+        <?php
+            if(isset($error)){
+                foreach ($error as $error) {
+                    echo '<span>'.$error.'</span><br>';
+                }      
+            }
+            if(isset($sql)){
+                echo '<span style = "background: green; margin-bottom: 20px; text-align: center;">'."$message".'</span><br>';
+                }
+            ?>
         <form class="border" method="POST">
             <label class=label1>Vehicle Brand</label>
             <input class="pickup_loc" name="brand" type="text" placeholder="Eg: Ford" required>

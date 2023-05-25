@@ -1,6 +1,5 @@
 <?php
-    include "./config.php";
-    include "session.php";
+    include "widgets/config.php";
     if (isset($_POST['sub'])) {
         $rented_by = mysqli_real_escape_string($conn, $_POST['rented_by']);
         $pickup = mysqli_real_escape_string($conn, $_POST['pickup']);
@@ -41,17 +40,8 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
                 <?php
-                    if(!isset($_SESSION['login_user'])){
-                        echo "<a href='login.php'>Login</a>";
-                    }else {
-                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
-                        <div id='myDropdown' class='dropdown-content'>
-                        <a href='user_panel.php'>Account Settings</a>
-                        <a href='logout.php'>Logout</a>
-                        </div>
-                        </div>"
-                        ;
-                    }
+                    include 'widgets/logged_in.php';
+                    logged_in();
                 ?>
             </ul>
         </nav>

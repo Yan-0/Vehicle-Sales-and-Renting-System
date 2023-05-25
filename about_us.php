@@ -16,18 +16,8 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php" class="active">About</a></li>
                 <?php
-                    session_start();
-                    if(!isset($_SESSION['login_user'])){
-                        echo "<a href='login.php'>Login</a>";
-                    }else {
-                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
-                        <div id='myDropdown' class='dropdown-content'>
-                        <a href='user_panel.php'>Account Settings</a>
-                        <a href='logout.php'>Logout</a>
-                        </div>
-                        </div>"
-                        ;
-                    }
+                    include 'widgets/logged_in.php';
+                    logged_in();
                 ?>
             </ul>
         </nav>
@@ -46,16 +36,9 @@
           We are proud to be a reliable and trusted source for buying and renting vehicles. We have served many satisfied customers over the years, and we look forward to helping you find the perfect vehicle for your needs. Thank you for choosing us, and we hope to see you soon!</h4>
           <br><br>
           <hr>
-          <footer id="footer_about">
-            <h3 style="margin: 0;">Our Outlets:</h3>
-            <h5>Budhanilkantha, Kathmandu</h5>
-            <h5>Sanepa, Lalitpur</h5>
-            <h5>Lakeside, Pokhara</h5>
-          </footer>
-          <hr>
           <footer>
             <br>  
-              <h3 style="margin: 0; text-align: left; padding-top:30px;">Customer Testimonials:</h3>
+              <h3 style="margin: 0; text-align: left; padding-top:30px; text-align: center; font-weight: 500;">Customer Testimonials</h3>
             <br>
           <div class="test_collection">
             <div class="padding">

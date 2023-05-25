@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "./config.php";
+    include "widgets/config.php";
     if (isset($_POST['sub'])) {
         $uname = mysqli_real_escape_string($conn, $_POST['uname']);
         $pass = md5($_POST['pass']);

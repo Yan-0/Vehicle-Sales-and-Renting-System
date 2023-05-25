@@ -22,7 +22,7 @@
       <section id="billboard">
         <div id="greeting">Welcome, 
             <?php
-                include('session.php');
+                include('widgets/session.php');
                 echo $login_session;
             ?>
         </div>

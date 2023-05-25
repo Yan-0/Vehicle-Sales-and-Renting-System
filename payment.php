@@ -1,5 +1,5 @@
 <?php
-    include "./config.php";
+    include "widgets/config.php";
     
     // $sql = "CREATE TABLE payment(
     //     payment_id INT NOT NULL,

@@ -15,11 +15,13 @@
 
 body{
     background: linear-gradient(to right, #008b8b, #0b385f);
+    margin: 0;
 }
 
 .all{
     background-color: rgba(0, 0, 0, 0.151);
     border-radius: 20px;
+    margin: 10px 10px 10px 10px;
     
 }
 
@@ -41,6 +43,7 @@ header > nav > ul > li{
 
 .am{
     padding-left: 10px;
+    font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -145,6 +148,7 @@ a{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     padding: 50px 30px 50px 30px;
+    margin: 0px 10px 10px 10px;
     color: white;
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.205);
@@ -153,7 +157,7 @@ a{
 }
 
 .butt{
-    background-color: #1264b1;
+    background-color: #185ca0;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     border: none;
@@ -162,7 +166,7 @@ a{
 }
 
 .butt:hover{
-    background-color: #1d7ad1;
+    background-color: #174a7b;
 
 }
 
@@ -187,29 +191,32 @@ a{
 
 #footer h5, h4{
     padding: 3px;
+    font-weight: 400;
+    opacity: 80%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#footer a{
-    color:black;
+#footer_contact h3, h2{
+    font-weight: 500;
 }
 
-#footer img{
-    width: 2%;
+#footer_contact, #footer_contact a{
+    color: white;
+}
+
+#footer_contact img{
+    width: 3%;
     float: left;
     display: flex;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
-#footer{
+#footer_contact{
+    display: flex;
+    justify-content: space-between;
     padding-top: 30px;
-    padding-left: 15px;
-}
-
-#footer_about{
-    text-align: left;
-    padding-top: 60px;
-    padding-left: 15px;
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
 
@@ -224,6 +231,11 @@ a{
     background: rgba(0, 0, 0, 0.224);
     border-radius: 15px;
     margin: 5px;
+}
+
+.table :hover{
+    background-color: #333;
+    border-radius: 15px;
 }
 
 .card{
@@ -249,6 +261,7 @@ a{
 
 .booking{
     cursor: pointer;
+    background: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 10rem;
     height: 3rem;
@@ -464,7 +477,8 @@ label{
 }
 
 .test{
-    background-color: black;
+    background-color: #0b385f;
+    border: #333;
     display: inline-block;
     width: 22rem;
     height: 13rem;
@@ -484,10 +498,12 @@ label{
 
 .test_name{
     padding-left: 20px;
+    font-weight: 500;
 }
 
 .test_text{
     display: flex;
+    opacity: 80%;
 }
 
 /*About Page End*/
@@ -769,3 +785,57 @@ span{
     padding: 10px 15px 10px 15px;
     cursor: pointer;
 }
+
+/*Social links*/
+
+#footer{
+    margin-top: 20px;
+    background: #333;
+    padding: 0;
+}
+
+.social-links a{
+    display: inline-block;
+}
+
+.social-links ul{
+    list-style: none;
+    padding-left: 0%;
+    margin: 0%;
+}
+
+.social-links li{
+    padding: 0px 10px;
+}
+
+.social-links svg{
+    color: mintcream;
+}
+
+.fb-icon svg:hover{
+    color: dodgerblue;
+}
+
+.tw-icon svg:hover{
+    color: aqua;
+}
+
+.yt-icon svg:hover{
+    color: red;
+}
+
+.in-icon svg:hover{
+    color: deeppink;
+}
+
+.social-links-header h2{
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    text-align: center;
+    font-weight: 500;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+
+/*Social links end*/

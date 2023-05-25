@@ -1,5 +1,20 @@
 <?php
-include './config.php';
+
+function vehicle_details($i){
+    $conn = mysqli_connect('localhost', "root", "", "SAutomobiles");
+    $sql = "SELECT * FROM vehicles WHERE vehicle_id='$i'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result -> fetch_assoc()) {
+            echo "<h3>" . $row['vehicle_model'] . "</h3>";
+            echo "<h3>" . $row['vehicle_type'] . "</h3>";
+            echo "<h1>$" . $row['vehicle_price'] . "</h1>";
+
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,18 +35,8 @@ include './config.php';
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
                 <?php
-                    session_start();
-                    if(!isset($_SESSION['login_user'])){
-                        echo "<a href='login.php'>Login</a>";
-                    }else {
-                        echo "<div class='dropdown'><button onclick='dropdown()' class='dropbtn'>" . $_SESSION['login_user'] . "</button>
-                        <div id='myDropdown' class='dropdown-content'>
-                        <a href='user_panel.php'>Account Settings</a>
-                        <a href='logout.php'>Logout</a>
-                        </div>
-                        </div>"
-                        ;
-                    }
+                    include 'widgets/logged_in.php';
+                    logged_in();
                 ?>
             </ul>
         </nav>
@@ -41,18 +46,7 @@ include './config.php';
         <div class="card">
             <img src="./assets/ioniq6.jpg" alt="">
             <div class="details">
-            <?php 
-                    $sql = "SELECT * FROM vehicles WHERE vehicle_id='7'";
-                    $result = mysqli_query($conn, $sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result -> fetch_assoc()) {
-                            echo "<h3>" . $row['vehicle_model'] . "</h3>";
-                            echo "<h3>" . $row['vehicle_type'] . "</h3>";
-                            echo "<h1>$" . $row['vehicle_price'] . "</h1>";
-
-                        }}
-                ?>
+            <?php vehicle_details(7); ?>
                 <a href="booking.php?name=Hyundai-Ioniq6"><button class="booking">Book now</button></a>
             </div>
         </div>
@@ -61,18 +55,7 @@ include './config.php';
         <div class="card">
             <img src="./assets/sportster-s.webp" alt="">
             <div class="details">
-            <?php 
-                    $sql = "SELECT * FROM vehicles WHERE vehicle_id='8'";
-                    $result = mysqli_query($conn, $sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result -> fetch_assoc()) {
-                            echo "<h3>" . $row['vehicle_model'] . "</h3>";
-                            echo "<h3>" . $row['vehicle_type'] . "</h3>";
-                            echo "<h1>$" . $row['vehicle_price'] . "</h1>";
-
-                        }}
-                ?>
+            <?php vehicle_details(8); ?>
                 <a href="booking.php?name=Harley-Davidson-SportsterS"><button class="booking">Book now</button></a>
             </div>
         </div>
