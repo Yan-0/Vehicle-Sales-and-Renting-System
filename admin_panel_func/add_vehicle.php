@@ -1,45 +1,45 @@
 <?php
-    include "widgets/config.php";
+    include "../widgets/config.php";
 
-    if (isset($_POST['sub'])) {
-		$brand = mysqli_real_escape_string($conn, $_POST['brand']);
-        $model = mysqli_real_escape_string($conn, $_POST['model']);
-        $year = mysqli_real_escape_string($conn, $_POST['make_year']);
-        $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
-        $price = mysqli_real_escape_string($conn, $_POST['price']);
-        $color = mysqli_real_escape_string($conn, $_POST['color']);
+    // if (isset($_POST['sub'])) {
+	// 	$brand = mysqli_real_escape_string($conn, $_POST['brand']);
+    //     $model = mysqli_real_escape_string($conn, $_POST['model']);
+    //     $year = mysqli_real_escape_string($conn, $_POST['make_year']);
+    //     $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
+    //     $price = mysqli_real_escape_string($conn, $_POST['price']);
+    //     $color = mysqli_real_escape_string($conn, $_POST['color']);
 
-		$target_dir = "uploads/";
-		$a = $_FILES["image"]["name"];
-		$target_file = $target_dir . $a;
-		if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-			$image = $_FILES['image']['name'];
-		}
-		$sql = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price, image_name)
-		VALUES ('$brand $model','$year', '$color', '$vehicle_type', '$price', '$a')";
-		if (mysqli_query($conn, $sql)) {
-    		$message = "New vehicle inserted successfully";
-		} 
-		else {
-    	    $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
-		}
+	// 	$target_dir = "uploads/";
+	// 	$a = $_FILES["image"]["name"];
+	// 	$target_file = $target_dir . $a;
+	// 	if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+	// 		$image = $_FILES['image']['name'];
+	// 	}
+	// 	$sql = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price, image_name)
+	// 	VALUES ('$brand $model','$year', '$color', '$vehicle_type', '$price', '$a')";
+	// 	if (mysqli_query($conn, $sql)) {
+    // 		$message = "New vehicle inserted successfully";
+	// 	} 
+	// 	else {
+    // 	    $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
+	// 	}
 	    
 		
-	}
+	// }
 
-    //     if (isset($_POST['sub'])) {
-    //         $brand = mysqli_real_escape_string($conn, $_POST['brand']);
-    //         $model = mysqli_real_escape_string($conn, $_POST['model']);
-    //         $year = mysqli_real_escape_string($conn, $_POST['make_year']);
-    //         $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
-    //         $price = mysqli_real_escape_string($conn, $_POST['price']);
-    //         $color = mysqli_real_escape_string($conn, $_POST['color']);
+        if (isset($_POST['sub'])) {
+            $brand = mysqli_real_escape_string($conn, $_POST['brand']);
+            $model = mysqli_real_escape_string($conn, $_POST['model']);
+            $year = mysqli_real_escape_string($conn, $_POST['make_year']);
+            $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
+            $price = mysqli_real_escape_string($conn, $_POST['price']);
+            $color = mysqli_real_escape_string($conn, $_POST['color']);
 
 
-    //         $insert = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price) VALUES('$brand $model','$year', '$color', '$vehicle_type', '$price')";
-    //         mysqli_query($conn, $insert);
+            $insert = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price) VALUES('$brand $model','$year', '$color', '$vehicle_type', '$price')";
+            mysqli_query($conn, $insert);
 
-    // }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +48,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Listed vehicles</title>
+    <link rel="stylesheet" href="../style.css">
+    <title>Add a vehicle</title>
     <style type="text/css">
 		.error{
 			color: red;
@@ -59,12 +59,12 @@
 </head>
 <body>
     <header>
-        <a class="logo-all" href="welcome.php"><img class="logo" src="./assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
+        <a class="logo-all" href="welcome.php"><img class="logo" src="../assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="about_us.php">About</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="../admin_panel.php">Admin Dashboard</a></li>
+                <li><a href="listed_vehicles.php" class="active">Add a Vehicle</a></li>
+                
             </ul>
         </nav>
     </header>

@@ -1,3 +1,2 @@
 -Account settings is updating password even if empty.
--Must be logged in condition to be set for rental and request.
--Admin and user panel needs to display data from database in tables for history menu.
+-Fetch and display data in rental dropdown for vehicle from db and also display inventory in admin panel.

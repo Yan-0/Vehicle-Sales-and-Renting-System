@@ -269,6 +269,12 @@ a{
     border: none;
 }
 
+.booking:hover{
+    background: white;
+    border-radius: 10px;
+    border: 2px solid lightseagreen;
+}
+
 #req{
     text-align: center;
     padding-bottom: 20px;
@@ -694,10 +700,14 @@ span{
     color: white;
     font-size: medium;
     align-items: center;
-    background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    background: #333;
     border-radius: 20px;
     border: none;
-    margin: 15px;
+    margin: 10px;
+}
+
+.func_button:hover{
+    border: 1px solid silver;
 }
 
 .func_button_a .func_button{
@@ -707,6 +717,61 @@ span{
 .func_count{
     padding: 60px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.func_flex{
+    display: flex;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 8;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    margin: 50px auto;
+    border: 1px solid #999;
+    width: 60%;
+}
+
+.popup-display{
+    padding: 25px;
+    margin: 25px;
+    box-shadow: 0 2px 5px #f5f5f5;
+    background: #333;
+}
+
+.popup-display h2,
+.popup-display p {
+    padding-top: 10px;
+    margin: 0 0 20px;
+    font-weight: 400;
+    color: white;
+}
+
+.popup-display h4{
+    text-align: left;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2023 at 11:12 AM
+-- Generation Time: Jun 01, 2023 at 05:54 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,9 @@ CREATE TABLE `booking` (
 
 INSERT INTO `booking` (`booking_id`, `booked_by`, `phone`, `country`, `email`, `address`, `booked_vehicle`, `booking_status`) VALUES
 (9, 'Raunak Khadka', '9851122343', 'Nepal', 'raunak@gmail.com', 'Kathmandu', 'Harley-Davidson-SportsterS', 'pending'),
-(10, 'Shreyan Bhandari', '9861960112', 'Nepal', 'shreyanbhandari36@gmail.com', 'Sundarbasti, Bhangal', 'Toyota-LC300', 'pending');
+(10, 'Shreyan Bhandari', '9861960112', 'Nepal', 'shreyanbhandari36@gmail.com', 'Budhanilkantha', 'Toyota-LC300', 'pending'),
+(11, 'Warner Bros', '9812345678', 'Nepal', 'root@gmail.com', 'Jhapa', 'Toyota-GR-Supra', 'pending'),
+(12, 'Dhiraj Jha', '9800123456', 'Nepal', 'dhiraj@gmail.com', 'Baneshwor', 'Hyundai-Ioniq6', 'completed');
 
 -- --------------------------------------------------------
 
@@ -60,15 +62,18 @@ CREATE TABLE `rental` (
   `vehicle_type` varchar(255) NOT NULL,
   `duration` varchar(255) NOT NULL,
   `start_date` datetime(6) NOT NULL,
-  `end_date` datetime(6) NOT NULL
+  `end_date` datetime(6) NOT NULL,
+  `rental_status` char(20) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rental`
 --
 
-INSERT INTO `rental` (`id`, `rented_by`, `pickup_loc`, `dropoff_loc`, `vehicle_type`, `duration`, `start_date`, `end_date`) VALUES
-(13, 'Dhiraj Jha', 'Tribhuvan International Airport', 'Chitwan', 'Car', '1 days, 0 hours, 1 minutes', '2023-05-13 08:48:00.000000', '2023-05-14 08:49:00.000000');
+INSERT INTO `rental` (`id`, `rented_by`, `pickup_loc`, `dropoff_loc`, `vehicle_type`, `duration`, `start_date`, `end_date`, `rental_status`) VALUES
+(13, 'Dhiraj Jha', 'Tribhuvan International Airport', 'Chitwan', 'Car', '1 days, 0 hours, 1 minutes', '2023-05-13 08:48:00.000000', '2023-05-14 08:49:00.000000', 'pending'),
+(17, 'Raunak Khadka', 'Kathmandu', 'Hetauda', 'Car', '0 days, 23 hours, 56 minutes', '2023-05-30 11:56:00.000000', '2023-05-31 11:52:00.000000', 'pending'),
+(19, 'Shreyan Bhandari', 'Nepalgunj', 'Kathmandu', 'Van', '1 days, 12 hours, 0 minutes', '2023-05-31 09:00:00.000000', '2023-06-01 21:00:00.000000', 'pending');
 
 -- --------------------------------------------------------
 
@@ -94,7 +99,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `password`, `fullname`, `phone`, `email`, `address`, `country`, `user_type`) VALUES
 (1, '0319b1d4bea02df4a314d6e0a1dd4151', 'Shreyan Bhandari', '9861960112', 'shreyanbhandari36@gmail.com', 'Budhanilkantha', 'Nepal', 'admin'),
 (2, '432639de2357c9d560a9c3d022d3fc8a', 'Dhiraj Jha', '9800123456', 'dhiraj@gmail.com', 'Kathmandu', 'Nepal', 'user'),
-(12, '6468b73a6a7122591320ef4114e9cf8e', 'Raunak Khadka', '9851122343', 'raunak@gmail.com', 'Kathmandu', 'Nepal', 'user');
+(12, '6468b73a6a7122591320ef4114e9cf8e', 'Raunak Khadka', '9851122343', 'raunak@gmail.com', 'Kathmandu', 'Nepal', 'user'),
+(13, '63a9f0ea7bb98050796b649e85481845', 'Root User', '9812345678', 'root@gmail.com', 'Baneshwor', 'Nepal', 'user');
 
 -- --------------------------------------------------------
 
@@ -193,19 +199,19 @@ ALTER TABLE `vehicle_requested`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `booking_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `rental`
 --
 ALTER TABLE `rental`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `vehicles`

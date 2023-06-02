@@ -33,7 +33,7 @@ function vehicle_details($i){
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about_us.php">About</a></li>
+                <li><a href="buy-2.php" class="active">Buy a vehicle</a></li>
                 <?php
                     include 'widgets/logged_in.php';
                     logged_in();

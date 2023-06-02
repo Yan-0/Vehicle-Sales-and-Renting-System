@@ -33,7 +33,7 @@ function vehicle_details($i){
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about_us.php">About</a></li>
+                <li><a href="buy.php" class="active">Buy a vehicle</a></li>
                 <?php
                     include 'widgets/logged_in.php';
                     logged_in();
@@ -41,9 +41,9 @@ function vehicle_details($i){
             </ul>
         </nav>
     </header>
-    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 5px; color: white;">
+    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 15px; color: white;">
         Let's get you a vehicle</h1>
-        <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 10px; color: white;">Currently we have these in stock</h2>
+        <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 20px; color: white;">Currently we have these in stock</h2>
     <div class="grid_view">
         <section class="table">
         <div class="card">

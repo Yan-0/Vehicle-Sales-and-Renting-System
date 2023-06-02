@@ -27,11 +27,10 @@
             ?>
         </div>
         <div class="function">
-            <a href="">
-            <button class="func_button">
+            <button class="func_button" data-modal="modal01">
                 <div class="func_count">
                 <?php 
-                    $sql = "SELECT COUNT(booked_by) FROM booking where booked_by = '$login_session'";
+                    $sql = "SELECT COUNT(booked_by) FROM booking where booked_by = '$login_session' AND booking_status = 'pending'";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result->num_rows > 0) {
@@ -42,12 +41,31 @@
                 Active Bookings
                 </div>
             </button>
-            </a>
-            <a href="">
-            <button class="func_button">
+            <div id="modal01" class="modal">
+                <div class="modal-content">
+                    <div class="popup-display">
+                        <a class="close">&times;</a>
+                            <h2>Active Bookings</h2>
+                            <p><?php
+                                $sql = "SELECT * FROM booking WHERE booked_by = '$login_session' AND booking_status = 'pending'";
+                                $result = mysqli_query($conn, $sql);
+            
+                                if ($result -> num_rows > 0) {
+                                    while ($row = $result -> fetch_assoc()) {
+                                        echo "<ol>"."<li>";
+                                        echo "<h4>" ."Booking No: ". $row['booking_id']. "<br>Booked Vehicle: ". $row['booked_vehicle']. "<br>Booking Status: ". $row['booking_status']. "</h4><hr>";
+                                        echo "</li>"."</ol>";
+                                    }}else{
+                                        echo "Nothing to see here.";
+                                    }
+                            ?></p>
+                    </div>
+                </div>
+            </div>
+            <button class="func_button" data-modal="modal02">
                 <div class="func_count">
                 <?php 
-                    $sql = "SELECT COUNT(rented_by) FROM rental where rented_by = '$login_session'";
+                    $sql = "SELECT COUNT(rented_by) FROM rental where rented_by = '$login_session' AND rental_status = 'pending'";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result->num_rows > 0) {
@@ -58,9 +76,28 @@
                 Active Rentals
                 </div>
             </button>
-            </a>
-            <a href="">
-            <button class="func_button">
+            <div id="modal02" class="modal">
+                <div class="modal-content">
+                    <div class="popup-display">
+                        <a class="close">&times;</a>
+                            <h2>Active Rentals</h2>
+                            <p><?php
+                                $sql = "SELECT * FROM rental WHERE rented_by = '$login_session' AND rental_status = 'pending'";
+                                $result = mysqli_query($conn, $sql);
+            
+                                if ($result -> num_rows > 0) {
+                                    while ($row = $result -> fetch_assoc()) {
+                                        echo "<ol>"."<li>";
+                                        echo "<h4>". "Rental No: " . $row['id'] . "<br>Pickup Location: ". $row['pickup_loc']. "<br>Dropoff Location: " .$row['dropoff_loc']."<br>Vehicle Type: ".$row['vehicle_type']."<br>Duration: ".$row['duration']."<br>Start Date: ".$row['start_date']."<br>End Date: ".$row['end_date']. "</h4><hr>";
+                                        echo "</li>"."</ol>";
+                                    }}else{
+                                        echo "Nothing to see here.";
+                                    }
+                            ?></p>
+                    </div>
+                </div>
+            </div>
+            <button class="func_button" data-modal="modal03">
                 <div class="func_count">
                 <?php 
                     $sql = "SELECT COUNT(requested_by) FROM vehicle_requested where requested_by = '$login_session'";
@@ -74,14 +111,87 @@
                 My Requests
                 </div>
             </button>
-            </a>
-            <a href="" class="func_button_a">
-            <button class="func_button">
+            <div id="modal03" class="modal">
+                <div class="modal-content">
+                    <div class="popup-display">
+                        <a class="close">&times;</a>
+                            <h2>Requested Vechicles</h2>
+                            <p><?php
+                                $sql = "SELECT * FROM vehicle_requested WHERE requested_by = '$login_session'";
+                                $result = mysqli_query($conn, $sql);
+            
+                                if ($result -> num_rows > 0) {
+                                    while ($row = $result -> fetch_assoc()) {
+                                        echo "<ol>"."<li>";
+                                        echo "<h4>". "Request No: " . $row['request_id'] . "<br>Requested Vehicle: ". $row['make_year']. " " .$row['brand']." ".$row['model']. "<br>Color: " . $row['vehicle_color']. "</h4><hr>";
+                                        echo "</li>"."</ol>";
+                                    }}else{
+                                        echo "Nothing to see here.";
+                                    }
+                            ?></p>
+                    </div>
+                </div>
+            </div>
+            <button class="func_button" data-modal="modal04">
                 <div class="func_count">
+                <div class="func_flex"><?php 
+                    $sql = "SELECT COUNT(rented_by) FROM rental where rented_by = '$login_session' AND rental_status = 'completed'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>" . $row['COUNT(rented_by)'] . " Rental |". "</h1>";
+                    }}
+                    ?>
+                    <?php 
+                    $sql = "SELECT COUNT(booked_by) FROM booking where booked_by = '$login_session' AND booking_status = 'completed'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result->num_rows > 0) {
+                        
+                        while ($row = $result -> fetch_assoc()) {
+                            echo "<h1>". "| " . $row['COUNT(booked_by)'] . " Booking" . "</h1>";
+                    }}
+                    ?>
+                </div>
                 My History
                 </div>
             </button>
-            </a>
+            <div id="modal04" class="modal">
+                <div class="modal-content">
+                    <div class="popup-display">
+                        <a class="close">&times;</a>
+                            <h2>Booking/Rental History</h2>
+                            <p><?php
+                                $sql = "SELECT * FROM rental WHERE rented_by = '$login_session'  AND rental_status = 'completed'";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result -> num_rows > 0) {
+                                    echo "Completed Rentals: "."<br>";
+                                    while ($row = $result -> fetch_assoc()) {
+                                        echo "<ol>"."<li>";
+                                        echo "<h4>". "Rental No: " . $row['id'] . "<br>Pickup Location: ". $row['pickup_loc']. "<br>Dropoff Location: " .$row['dropoff_loc']."<br>Vehicle Type: ".$row['vehicle_type']."<br>Duration: ".$row['duration']. "</h4><hr>";
+                                        echo "</li>"."</ol>";
+                                    }}else{
+                                        echo "No rentals completed.";
+                                    }
+                            ?></p>
+                            <p><?php
+                                $sql = "SELECT * FROM booking WHERE booked_by = '$login_session' AND booking_status = 'completed'";
+                                $result = mysqli_query($conn, $sql);
+                                
+                                if ($result -> num_rows > 0) {
+                                    echo "Completed Bookings: ";
+                                    while ($row = $result -> fetch_assoc()) {
+                                        echo "<ol>"."<li>";
+                                        echo "<h4>" ."Booking No: ". $row['booking_id']. "<br>Booked Vehicle: ". $row['booked_vehicle']. "</h4><hr>";
+                                        echo "</li>"."</ol>";
+                                    }}else{
+                                        echo "Nothing bookings completed.";
+                                    }
+                            ?></p>
+                    </div>
+                </div>
+            </div>
             <a href="account_settings.php" class="func_button_a">
             <button class="func_button">
                 <div class="func_count">
@@ -91,5 +201,26 @@
             </a>
         </div>
       </section>
+      <script>
+        let modalBtns = [...document.querySelectorAll(".func_button")];
+      modalBtns.forEach(function (btn) {
+        btn.onclick = function () {
+          let modal = btn.getAttribute("data-modal");
+          document.getElementById(modal).style.display = "block";
+        };
+      });
+      let closeBtns = [...document.querySelectorAll(".close")];
+      closeBtns.forEach(function (btn) {
+        btn.onclick = function () {
+          let modal = btn.closest(".modal");
+          modal.style.display = "none";
+        };
+      });
+      window.onclick = function (event) {
+        if (event.target.className === "modal") {
+          event.target.style.display = "none";
+        }
+      };
+      </script>
 </body>
 </html>

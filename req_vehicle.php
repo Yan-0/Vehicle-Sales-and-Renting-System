@@ -1,22 +1,36 @@
 <?php
+    include 'widgets/logged_in.php';
     include "widgets/config.php";
-    if (isset($_POST['sub'])) {
-        $requested_by = mysqli_real_escape_string($conn, $_POST['req_by']);
-        $brand = mysqli_real_escape_string($conn, $_POST['brand']);
-        $model = mysqli_real_escape_string($conn, $_POST['model']);
-        $make_year = mysqli_real_escape_string($conn, $_POST['make_year']);
-        $vehicle_color = mysqli_real_escape_string($conn, $_POST['vehicle_color']);
+    
+    if (isset($_SESSION['login_user'])) {
+        $user_check = $_SESSION['login_user'];
+    
+        $ses_sql = mysqli_query($conn,"select fullname from user where fullname = '$user_check'");
+        
+        $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
+        
+        $login_session = $row['fullname'];
 
-        $select = "SELECT * FROM vehicle_requested WHERE requested_by = '$requested_by'";
-        $result = mysqli_query($conn, $select);
+        if (isset($_POST['sub'])) {
+            $requested_by = mysqli_real_escape_string($conn, $_POST['req_by']);
+            $brand = mysqli_real_escape_string($conn, $_POST['brand']);
+            $model = mysqli_real_escape_string($conn, $_POST['model']);
+            $make_year = mysqli_real_escape_string($conn, $_POST['make_year']);
+            $vehicle_color = mysqli_real_escape_string($conn, $_POST['vehicle_color']);
+
+            $select = "SELECT * FROM vehicle_requested WHERE requested_by = '$requested_by'";
+            $result = mysqli_query($conn, $select);
         
-        if(mysqli_num_rows($result) > 0){
-            $error[] = 'You already have a booking pending';
-        }else{
-            $insert = "INSERT INTO vehicle_requested(requested_by, brand, model, make_year, vehicle_color) VALUES('$requested_by','$brand','$model', '$make_year', '$vehicle_color')";
-            mysqli_query($conn, $insert);
+            if(mysqli_num_rows($result) > 0){
+                $error[] = 'You already have a request pending';
+            }else{
+                $insert = "INSERT INTO vehicle_requested(requested_by, brand, model, make_year, vehicle_color) VALUES('$requested_by','$brand','$model', '$make_year', '$vehicle_color')";
+                mysqli_query($conn, $insert);
+            }
+        
         }
-        
+    }else {
+        $error[] = 'You need to be logged in to use this feature.';
     }
 ?>
 
@@ -38,7 +52,6 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
                 <?php
-                    include 'widgets/logged_in.php';
                     logged_in();
                 ?>
             </ul>

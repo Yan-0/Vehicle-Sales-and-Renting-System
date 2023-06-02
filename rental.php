@@ -1,25 +1,43 @@
 <?php
-    include "widgets/config.php";
-    if (isset($_POST['sub'])) {
-        $rented_by = mysqli_real_escape_string($conn, $_POST['rented_by']);
-        $pickup = mysqli_real_escape_string($conn, $_POST['pickup']);
-        $dropoff = mysqli_real_escape_string($conn, $_POST['dropoff']);
-        $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle']);
-        $duration = mysqli_real_escape_string($conn, $_POST['duration']);
-        $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
-        $end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
-
-        $select = "SELECT * FROM rental WHERE rented_by = '$rented_by'";
-        $result = mysqli_query($conn, $select);
-
-        if(mysqli_num_rows($result) > 0){
-            $error[] = 'You already have a rental request pending';
-        }else{
-            $insert = "INSERT INTO rental(rented_by, pickup_loc, dropoff_loc, vehicle_type, duration, start_date, end_date) VALUES('$rented_by','$pickup','$dropoff', '$vehicle_type', '$duration', '$start_date', '$end_date')";
-            mysqli_query($conn, $insert);
-        }
+    include 'widgets/config.php';
+    include 'widgets/logged_in.php';
+    
+    $dt = new DateTime(); // Date object using current date and time
+    $dt = $dt->format('Y-m-d\TH:i'); 
+    
+    if (isset($_SESSION['login_user'])) {
+        $user_check = $_SESSION['login_user'];
+    
+        $ses_sql = mysqli_query($conn,"select fullname from user where fullname = '$user_check'");
         
+        $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
+        
+        $login_session = $row['fullname'];
+    
+        if (isset($_POST['sub'])) {
+            $rented_by = mysqli_real_escape_string($conn, $_POST['rented_by']);
+            $pickup = mysqli_real_escape_string($conn, $_POST['pickup']);
+            $dropoff = mysqli_real_escape_string($conn, $_POST['dropoff']);
+            $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle']);
+            $duration = mysqli_real_escape_string($conn, $_POST['duration']);
+            $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
+            $end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
+    
+            $select = "SELECT * FROM rental WHERE rented_by = '$rented_by'";
+            $result = mysqli_query($conn, $select);
+    
+            if(mysqli_num_rows($result) > 0){
+                $error[] = 'You already have a rental request pending';
+            }else{
+                $insert = "INSERT INTO rental(rented_by, pickup_loc, dropoff_loc, vehicle_type, duration, start_date, end_date) VALUES('$rented_by','$pickup','$dropoff', '$vehicle_type', '$duration', '$start_date', '$end_date')";
+                mysqli_query($conn, $insert);
+            }
+            
+        }
+    }else {
+        $error[] = 'You need to be logged in to use this feature.';
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +56,8 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="about_us.php">About</a></li>
+                <li><a href="rental.php" class="active">Rent a vehicle</a></li>
                 <?php
-                    include 'widgets/logged_in.php';
                     logged_in();
                 ?>
             </ul>
@@ -74,9 +91,9 @@
             <label class=label4 for="duration">Rent duration</label>
             <input type="text" name="duration" id="duration" placeholder="Select date and time for duration" readonly>
             <label class=label5 for="datetime1">Pick-up date and time</label>
-            <input id="datetime1" name="start_date" type="datetime-local" required>
+            <input id="datetime1" name="start_date" type="datetime-local" required min="<?php echo $dt;?>">
             <label class=label6 for="datetime2">Drop-off date and time</label>
-            <input id="datetime2" name="end_date" type="datetime-local" required>
+            <input id="datetime2" name="end_date" type="datetime-local" required min="<?php echo $dt;?>">
             <input type="text" name="rented_by" value="<?php echo $login_session;?>" /hidden>
             <input class="rent_sub" name="sub" type="submit" value="Confirm">
         </form>
@@ -103,7 +120,6 @@
 
         document.getElementById("datetime1").addEventListener("change", calculateDifference);
         document.getElementById("datetime2").addEventListener("change", calculateDifference);
-
     </script>
 </body>
 </html>
