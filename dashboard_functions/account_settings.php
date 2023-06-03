@@ -1,6 +1,6 @@
 <?php
-    include "widgets/config.php";
-    include "widgets/session.php";
+    include "../widgets/config.php";
+    include "../widgets/session.php";
     if (isset($_POST['sub'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $pass = md5($_POST['nPass']);
@@ -37,16 +37,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Settings</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <header>
-        <a class="logo-all" href="welcome.php"><img class="logo" src="./assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
+        <a class="logo-all" href="welcome.php"><img class="logo" src="../assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="user_panel.php" class="active">User Settings</a></li>
-                <li><a href="./logout.php">Logout</a></li>
+                <li><a href="../user_panel.php">User Panel</a></li>
+                <li><a href="account_settings.php" class="active">User Settings</a></li>
+                <li><a href="../logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

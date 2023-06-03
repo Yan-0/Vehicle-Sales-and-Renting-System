@@ -42,7 +42,7 @@
         </div>
       </section>
       <footer id="footer">
-      <div class="social-links-header">
+      <div class="social-links-footer">
                 <h2>Follow us</h2>
         </div>
         <div class="social-links">

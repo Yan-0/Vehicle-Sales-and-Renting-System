@@ -192,7 +192,7 @@
                     </div>
                 </div>
             </div>
-            <a href="account_settings.php" class="func_button_a">
+            <a href="dashboard_functions/account_settings.php" class="func_button_a">
             <button class="func_button">
                 <div class="func_count">
                 Account Settings

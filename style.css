@@ -14,12 +14,14 @@
 /*scroll-bar */
 
 body{
-    background: linear-gradient(to right, #008b8b, #0b385f);
+    /* background: linear-gradient(to right, #008b8b, #0b385f); */
+    background-image: url(assets/skin2.jpg);
+    background-position: left;
     margin: 0;
 }
 
 .all{
-    background-color: rgba(0, 0, 0, 0.151);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     margin: 10px 10px 10px 10px;
     
@@ -38,7 +40,7 @@ header > nav > ul > li{
 .logo-all{
     display: flex;
     align-items: center;
-    color: black;
+    color: white;
 }
 
 .am{
@@ -67,7 +69,7 @@ nav a:hover{
 
 nav a.active{
     border-radius: 15px;
-    background: darkcyan;
+    background: #36347d;
 }
 
 /* Dropdown Button */
@@ -99,9 +101,10 @@ nav a.active{
   .dropdown-content {
     display: none;
     border-radius: 15px;
+    margin-top: 2px;
     border: solid 1px white;
     position: absolute;
-    background-color: #0b385f;
+    background-color: #040d28;
     min-width: 160px;
     z-index: 1;
   }
@@ -116,7 +119,7 @@ nav a.active{
   
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: rgba(0, 0, 0, 0.200);
+    background-color: rgba(174, 174, 174, 0.1);
     border: none;
  }
   
@@ -151,22 +154,23 @@ a{
     margin: 0px 10px 10px 10px;
     color: white;
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.205);
+    background: rgba(0, 0, 0, 0.3);
     background-blend-mode: lighten;
 
 }
 
 .butt{
-    background-color: #185ca0;
+    background-color: #2b2a61;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     border: none;
     padding: 10px;
     color: white;
+    cursor: pointer;
 }
 
 .butt:hover{
-    background-color: #174a7b;
+    background-color: #36347d;
 
 }
 
@@ -208,7 +212,7 @@ a{
     width: 3%;
     float: left;
     display: flex;
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 #footer_contact{
@@ -216,7 +220,6 @@ a{
     justify-content: space-between;
     padding-top: 30px;
     padding-left: 20px;
-    padding-right: 10px;
 }
 
 
@@ -228,13 +231,13 @@ a{
 }
 
 .table{
-    background: rgba(0, 0, 0, 0.224);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     margin: 10px;
 }
 
 .table :hover{
-    background-color: #333;
+    background-color: #1d1d40;
     border-radius: 15px;
 }
 
@@ -273,6 +276,7 @@ a{
     background: white;
     border-radius: 10px;
     border: 2px solid lightseagreen;
+    scale: 1.05;
 }
 
 #req{
@@ -287,6 +291,10 @@ a{
     cursor: pointer;
     border: none;
     border-radius: 8px;
+}
+
+.req_but:hover{
+    scale: 1.01;
 }
 
 .pages{
@@ -400,6 +408,11 @@ a{
     border-radius: 8px;
 }
 
+.rent_sub:hover{
+    scale: 1.02;
+    border: 1px solid lightseagreen;
+}
+
 label{
     font-size: small;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -484,7 +497,7 @@ label{
 }
 
 .test{
-    background-color: #0b385f;
+    background-color: hsla(241, 43%, 22%, 0.7);
     border: #333;
     display: inline-block;
     width: 22rem;
@@ -556,7 +569,7 @@ form .fin{
 }
 
 #form button:hover{
-    transform: translateY(-1px);
+    scale: 1.03;
 }
 
 .info1{
@@ -595,7 +608,7 @@ form .fin{
 }
 
 #booking_form button:hover{
-    transform: translateY(-1px);
+    scale: 1.03;
 }
 
 span{
@@ -649,7 +662,6 @@ span{
 }
 
 .footer_ul > li > button {
-    color: #333;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -659,13 +671,14 @@ span{
 
 .footer_ul > li > button.active {
     color: #fff;
-    background-color: #0b385f;
-    border: 1px solid #0b385f;
+    background-color: #3e3b8e;
+    border: 1px solid white;
     font-weight: bold;
 }
 
 .footer_ul > li > button:hover:not(.active) {
     background-color: #f2f2f2;
+    scale: 1.04;
 }
 
 .footer_ul > li > button:disabled {
@@ -700,7 +713,7 @@ span{
     color: white;
     font-size: medium;
     align-items: center;
-    background: #333;
+    background: #201f48;
     border-radius: 20px;
     border: none;
     margin: 10px;
@@ -708,6 +721,7 @@ span{
 
 .func_button:hover{
     border: 1px solid silver;
+    scale: 1.01;
 }
 
 .func_button_a .func_button{
@@ -737,7 +751,7 @@ span{
 
 .modal-content {
     margin: 50px auto;
-    border: 1px solid #999;
+    border: 1px solid silver;
     width: 60%;
 }
 
@@ -745,7 +759,7 @@ span{
     padding: 25px;
     margin: 25px;
     box-shadow: 0 2px 5px #f5f5f5;
-    background: #333;
+    background: hsla(241, 40%, 20%, 0.8);
 }
 
 .popup-display h2,
@@ -856,8 +870,8 @@ span{
 
 #footer{
     margin-top: 20px;
-    background: #333;
-    padding: 0;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
 }
 
 .social-links a{
@@ -894,7 +908,7 @@ span{
     color: deeppink;
 }
 
-.social-links-header h2{
+.social-links-footer h2{
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
     text-align: center;
