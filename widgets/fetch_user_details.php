@@ -1,5 +1,5 @@
 <?php
-    include 'widgets/session.php';
+    include 'session.php';
 
     $query = "SELECT * FROM user WHERE fullname = '$login_session'";
     $result = $conn->query($query);

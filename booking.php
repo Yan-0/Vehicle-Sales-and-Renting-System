@@ -87,7 +87,7 @@
         // Make an AJAX request to fetch user details
         window.addEventListener('load', () => {
         // Make an AJAX request to fetch user details
-        fetch('fetch_user_details.php', {
+        fetch('widgets/fetch_user_details.php', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
