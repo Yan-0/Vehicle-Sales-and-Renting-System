@@ -1,3 +1,60 @@
+<?php
+    include('widgets/session.php');
+    function displayTable($tableName, $excludedColumn){
+        $query = "SELECT * FROM $tableName";
+        $result = mysqli_query($conn, $query);
+
+        $data = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+        echo '<table border="1px solid">';
+        echo '<tr>';
+        foreach ($data[0] as $header => $value) {
+            if ($header !== $excludedColumn) {
+                echo '<th>' . $header . '</th>';
+            }
+        }
+        echo '</tr>';
+         foreach ($data as $row) {
+            echo '<tr>';
+            foreach ($row as $header => $value) {
+                if ($header !== $excludedColumn) {
+                    echo '<td>' . $value . '</td>';
+                }
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+
+    function display_Table($tableName){
+        $query = "SELECT * FROM $tableName";
+        $result = mysqli_query($conn, $query);
+
+        $data = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+        echo '<table border="1px solid">';
+        echo '<tr>';
+        foreach ($data[0] as $header => $value) {
+                echo '<th>' . $header . '</th>';
+        }
+        echo '</tr>';
+         foreach ($data as $row) {
+            echo '<tr>';
+            foreach ($row as $header => $value) {
+                    echo '<td>' . $value . '</td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+    // $tableName = "user";
+    //                         $excludedColumn = "password";
+    //                         displayTable($tableName, $excludedColumn);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +64,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background: url(assets/skin4.jpg); background-position: left; background-size: cover;">
 <header>
         <a class="logo-all" href="welcome.php"><img class="logo" src="./assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
         <nav>
@@ -22,7 +79,6 @@
       <section id="billboard">
         <div id="greeting">Welcome, 
             <?php
-                include('widgets/session.php');
                 echo $login_session;
             ?>
         </div>
@@ -45,20 +101,35 @@
                 <div class="modal-content">
                     <div class="popup-display">
                         <a class="close">&times;</a>
-                            <h2>Registered Users</h2>
-                            <p><?php
-                                $sql = "SELECT * FROM user";
-                                $result = mysqli_query($conn, $sql);
-            
-                                if ($result->num_rows > 0) {
-                                    echo "<ol>";
-                                    while ($row = $result -> fetch_assoc()) {
-                                        echo "<li>";
-                                        echo "<h4>". "Username: " . $row['fullname'] . "<br>User Type: ". $row['user_type']. "</h4><hr>";
-                                }}
-                                echo "</li>";
-                                echo "</ol>";
-                            ?></p>
+                        <h2>Registered Users</h2>
+                        <p>
+                            <?php
+                                $query = "SELECT * FROM user";
+                                $result = mysqli_query($conn, $query);
+                                $data = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[] = $row;
+                                }
+                                echo '<table class="display_table">';
+                                echo '<tr>';
+                                foreach ($data[0] as $header => $value) {
+                                    if ($header !== 'password') {
+                                        echo '<th>' . $header . '</th>';
+                                    }
+                                }
+                                echo '</tr>';
+                                 foreach ($data as $row) {
+                                    echo '<tr>';
+                                    foreach ($row as $header => $value) {
+                                        if ($header !== 'password') {
+                                            echo '<td>' . $value . '</td>';
+                                        }
+                                    }
+                                    echo '</tr>';
+                                }
+                                echo '</table>';
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -81,19 +152,31 @@
                     <div class="popup-display">
                         <a class="close">&times;</a>
                             <h2>Total Bookings</h2>
-                            <p><?php
-                                $sql = "SELECT * FROM booking";
-                                $result = mysqli_query($conn, $sql);
-            
-                                if ($result->num_rows > 0) {
-                                    echo "<ol>";
-                                    while ($row = $result -> fetch_assoc()) {
-                                        echo "<li>";
-                                        echo "<h4>". "Booked By: " . $row['booked_by'] . "<br>Vehicle: ". $row['booked_vehicle']. "<br>E-mail: ". $row['email']. "<br>Phone: ". $row['phone']. "<br>Address: ". $row['address'].", ".$row['country']. "<br>Status: ". $row['booking_status']. "</h4><hr>";
-                                }}
-                                echo "</li>";
-                                echo "</ol>";
-                            ?></p>
+                            <p>
+                            <?php
+                                $query = "SELECT * FROM booking";
+                                $result = mysqli_query($conn, $query);
+                        
+                                $data = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[] = $row;
+                                }
+                                echo '<table class="display_table">';
+                                echo '<tr>';
+                                foreach ($data[0] as $header => $value) {
+                                        echo '<th>' . $header . '</th>';
+                                }
+                                echo '</tr>';
+                                 foreach ($data as $row) {
+                                    echo '<tr>';
+                                    foreach ($row as $header => $value) {
+                                            echo '<td>' . $value . '</td>';
+                                    }
+                                    echo '</tr>';
+                                }
+                                echo '</table>';
+                            ?>
+                            </p>
                     </div>
                 </div>
             </div>
@@ -117,17 +200,27 @@
                         <a class="close">&times;</a>
                             <h2>Total Rentals</h2>
                             <p><?php
-                                $sql = "SELECT * FROM rental";
-                                $result = mysqli_query($conn, $sql);
-            
-                                if ($result->num_rows > 0) {
-                                    echo "<ol>";
-                                    while ($row = $result -> fetch_assoc()) {
-                                        echo "<li>";
-                                        echo "<h4>". "Rental Requested By: " . $row['rented_by'] . "<br>Pickup Location: ". $row['pickup_loc']. "<br>Dropoff Location: " .$row['dropoff_loc']."<br>Vehicle Type: ".$row['vehicle_type']."<br>Duration: ".$row['duration']."<br>Start Date: ".$row['start_date']."<br>End Date: ".$row['end_date']. "</h4><hr>";
-                                }}
-                                echo "</li>";
-                                echo "</ol>";
+                                $query = "SELECT * FROM rental";
+                                $result = mysqli_query($conn, $query);
+                        
+                                $data = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[] = $row;
+                                }
+                                echo '<table class="display_table">';
+                                echo '<tr>';
+                                foreach ($data[0] as $header => $value) {
+                                        echo '<th>' . $header . '</th>';
+                                }
+                                echo '</tr>';
+                                 foreach ($data as $row) {
+                                    echo '<tr>';
+                                    foreach ($row as $header => $value) {
+                                            echo '<td>' . $value . '</td>';
+                                    }
+                                    echo '</tr>';
+                                }
+                                echo '</table>';
                             ?></p>
                     </div>
                 </div>
@@ -151,21 +244,63 @@
                     <div class="popup-display">
                         <a class="close">&times;</a>
                             <h2>Listed Vehicles</h2>
-                            <p><?php
-                                $sql = "SELECT * FROM vehicles";
-                                $result = mysqli_query($conn, $sql);
-
-                                if ($result->num_rows > 0) {
-                                    echo "<ol>";
-                                    while ($row = $result -> fetch_assoc()) {
-                                        echo "<li>";
-                                        echo "<h4>". " " . $row['make_year']. " " . $row['vehicle_model'] . "<br>Color: " . $row['color']. "<br>Vehicle Type: " .$row['vehicle_type']. "<br>Price: ". $row['vehicle_price'] . "</h4><hr>";
-                                    }}
-                                    echo "</li>";
-                                    echo "</ol>";
+                            <p>
+                                <h3 style="text-decoration: underline;">Sales Vehicles:</h3>
+                                <?php
+                                $query = "SELECT * FROM vehicles";
+                                $result = mysqli_query($conn, $query);
+                                $data = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[] = $row;
+                                }
+                                echo '<table class="display_table">';
+                                echo '<tr>';
+                                foreach ($data[0] as $header => $value) {
+                                    if ($header !== 'image_name') {
+                                        echo '<th>' . $header . '</th>';
+                                    }
+                                }
+                                echo '</tr>';
+                                 foreach ($data as $row) {
+                                    echo '<tr>';
+                                    foreach ($row as $header => $value) {
+                                        if ($header !== 'image_name') {
+                                            echo '<td>' . $value . '</td>';
+                                        }
+                                    }
+                                    echo '</tr>';
+                                }
+                                echo '</table><br>';
                             ?>
-                                <a href="./admin_panel_func/add_vehicle.php"><button class=butt>Add Vehicle</button></a>    
                             </p>
+                            <p>
+                            <h3 style="text-decoration: underline;">Rental Vehicles:</h3>
+                            <?php
+                                $query = "SELECT * FROM rental_vehicles";
+                                $result = mysqli_query($conn, $query);
+                                $data = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[] = $row;
+                                }
+                                echo '<table class="display_table">';
+                                echo '<tr>';
+                                foreach ($data[0] as $header => $value) {
+                                        echo '<th>' . $header . '</th>';
+                                }
+                                echo '</tr>';
+                                 foreach ($data as $row) {
+                                    echo '<tr>';
+                                    foreach ($row as $header => $value) {
+                                            echo '<td>' . $value . '</td>';
+                                    }
+                                    echo '</tr>';
+                                }
+                                echo '</table><br>';
+                            
+                            ?>
+                            </p>
+                                <a href="./dashboard_functions/add_vehicle.php"><button class=button_av>Add Vehicle</button></a>    
+                            
                     </div>
                 </div>
             </div>
@@ -189,18 +324,27 @@
                         <a class="close">&times;</a>
                             <h2>Requested Vehicles</h2>
                             <p><?php
-                                $sql = "SELECT * FROM vehicle_requested";
-                                $result = mysqli_query($conn, $sql);
-
-                                if ($result->num_rows > 0) {
-                                    echo "<ol>";
-                                    while ($row = $result -> fetch_assoc()) {
-                                        echo "<li>";
-                                        echo "<h4>". "Requested By: " . $row['requested_by'] . "<br>Vehicle: ". $row['make_year']. " " .$row['brand']." ".$row['model']. "<br>Color: " . $row['vehicle_color'] . "</h4><hr>";
-                                        
-                                    }}
-                                    echo "</li>";
-                                    echo "</ol>";
+                                $query = "SELECT * FROM vehicle_requested";
+                                $result = mysqli_query($conn, $query);
+                        
+                                $data = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[] = $row;
+                                }
+                                echo '<table class="display_table">';
+                                echo '<tr>';
+                                foreach ($data[0] as $header => $value) {
+                                        echo '<th>' . $header . '</th>';
+                                }
+                                echo '</tr>';
+                                 foreach ($data as $row) {
+                                    echo '<tr>';
+                                    foreach ($row as $header => $value) {
+                                            echo '<td>' . $value . '</td>';
+                                    }
+                                    echo '</tr>';
+                                }
+                                echo '</table>';
                             ?></p>
                     </div>
                 </div>

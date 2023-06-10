@@ -31,6 +31,15 @@
             }else{
                 $insert = "INSERT INTO rental(rented_by, pickup_loc, dropoff_loc, vehicle_type, duration, start_date, end_date) VALUES('$rented_by','$pickup','$dropoff', '$vehicle_type', '$duration', '$start_date', '$end_date')";
                 mysqli_query($conn, $insert);
+                $sql = "SELECT quantity FROM rental_vehicles WHERE vehicle_type = '$vehicle_type'";
+                $result = mysqli_query($conn, $sql);
+                while ($row = $result -> fetch_assoc()) {
+                    $currentQuantity = $row['quantity'];
+                }
+                $bookedQuantity = 1;
+                $stock = $currentQuantity - $bookedQuantity;
+                $updateStock = "UPDATE rental_vehicles SET quantity = '$stock' WHERE vehicle_type = '$vehicle_type'";
+                $conn->query($updateStock);
             }
             
         }
@@ -83,10 +92,16 @@
             <input class="dropoff" name="dropoff" type="text" placeholder="Where is your destination?" required>
             <label class=label3>Vehicle needed</label>
             <select class="vehicle_type" name="vehicle" name="vehicle_type">
-                <option value="Car">Car (5-seater)</option>
-                <option value="Van">Van (12-seater)</option>
-                <option value="Bus">Bus (30-seater)</option>
-                <option value="Bike">Motorbike (2-seater)</option>
+            <?php
+                $query = "SELECT vehicle_type FROM rental_vehicles WHERE quantity > 0";
+                $result = mysqli_query($conn, $query);
+
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<option value=" . $row['vehicle_type'] . ">" . $row['vehicle_type'] . "</option>";
+                    }
+                }
+            ?>
             </select>
             <label class=label4 for="duration">Rent duration</label>
             <input type="text" name="duration" id="duration" placeholder="Select date and time for duration" readonly>

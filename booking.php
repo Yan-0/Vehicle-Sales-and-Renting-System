@@ -6,7 +6,7 @@
         $address = mysqli_real_escape_string($conn, $_POST['address']);
         $country = mysqli_real_escape_string($conn, $_POST['country']);
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-        $vehicle_booked = mysqli_real_escape_string($conn, $_GET['name']);
+        $vehicle_booked = mysqli_real_escape_string($conn, $_GET['no']);
 
         $select = "SELECT * FROM booking WHERE booked_by = '$fullname' && email = '$email' && booked_vehicle = '$vehicle_booked'";
 
@@ -17,33 +17,17 @@
         }else{
             $insert = "INSERT INTO booking(booked_by, phone, email, address, country, booked_vehicle) VALUES('$fullname', '$phone', '$email', '$address', '$country', '$vehicle_booked')";
             mysqli_query($conn, $insert);
+            $sql = "SELECT quantity FROM vehicles WHERE chassis_no = '$vehicle_booked'";
+            $result = mysqli_query($conn, $sql);
+            while ($row = $result -> fetch_assoc()) {
+                $currentQuantity = $row['quantity'];
+            }
+            $bookedQuantity = 1;
+            $stock = $currentQuantity - $bookedQuantity;
+            $updateStock = "UPDATE vehicles SET quantity = '$stock' WHERE chassis_no = '$vehicle_booked'";
+            $conn->query($updateStock);
         }
     }
-
-// if (isset($_POST["autofill"])) {
-      
-//     // Get corresponding first name and 
-//     // last name for that user id    
-//     $query = mysqli_query($conn, "SELECT fullname, 
-//     email, phone, address, country FROM login WHERE $_SESSION['login_user']='$fullname'");
-  
-//     $row = mysqli_fetch_array($query);
-  
-//     // Get the first name
-//     $fullname = $row["fullname"];
-//     $phone = $row["phone"];
-//     $address = $row["address"];
-//     $country = $row["country"];
-//     $email = $row["email"];  
-    
-// }
-  
-// // Store it in a array
-// $result = array("$fullname", "$phone", "$address", "$country", "$email");
-  
-// // Send in JSON encoded form
-// $myJSON = json_encode($result);
-// echo $myJSON;
 ?>
 
 <!DOCTYPE html>
@@ -85,26 +69,44 @@
                         ?>
                     </h1>
                     <form action="" method="POST" name="booking_form" enctype="multipart/form-data">
-                        <input required type="text" placeholder="Full Name" name="fullname" class="fin" required><br><br>
-                        <input required type="text" placeholder="Phone" name="phone" class="fin" required><br><br>
-                        <input required type="text" placeholder="Address" name="address" class="fin" required><br><br>
-                        <select name="country" class="fin" required>
+                        <input required type="text" placeholder="Full Name" name="fullname" class="fin" id="name" ><br><br>
+                        <input required type="text" placeholder="Phone" name="phone" id="phone" class="fin" ><br><br>
+                        <input required type="text" placeholder="Address" name="address" id="address" class="fin" ><br><br>
+                        <select name="country" id="country" class="fin" >
                             <option value="0">Select a Country</option>
                             <option value="Nepal">Nepal</option>
                         </select><br><br>
-                        <input required type="email" placeholder="E-mail" name="email" class="fin" required><br><br><br><br><br>
-                        <?php 
-                        // if(isset($_SESSION['login_user'])){
-                        //     echo "<button onclick='autofill()' id='auto' name='autofill'>Use account information for booking</button><br><br>";
-                        // }
-                        ?>
-                        <button type="submit" class="but" name="sub" onclick="valid()">Confirm Booking</button>
+                        <input required type="email" placeholder="E-mail" name="email" id="email" class="fin" ><br><br><br><br><br>
+                        <button type="submit" class="but" name="sub" >Confirm Booking</button>
                         <p class="info1">*We might give you a call to confirm your booking</p>
                         <p class="info2">*Please enter all information correctly.</p>
                     </form>
                 </div>
     </section>
     <script>
+        // Make an AJAX request to fetch user details
+        window.addEventListener('load', () => {
+        // Make an AJAX request to fetch user details
+        fetch('fetch_user_details.php', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Fill the form fields with the fetched data
+            document.querySelector('#name').value = data.name;
+            document.querySelector('#phone').value = data.phone;
+            document.querySelector('#address').value = data.address;
+            document.querySelector('#country').value = data.country;
+            document.querySelector('#email').value = data.email;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        });
+
         function valid(){
 
             fullname = document.booking_form.fullname.value;

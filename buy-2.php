@@ -15,6 +15,20 @@ function vehicle_details($i){
     }
 }
 
+function availableStock($i){
+    $conn = mysqli_connect('localhost', "root", "", "SAutomobiles");
+    $sql = "SELECT quantity FROM vehicles WHERE vehicle_id='$i'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = $result -> fetch_assoc()) {
+        if($row['quantity'] > 0){
+            echo "Book now";
+        }
+        else{
+            echo "Out of stock";
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +61,7 @@ function vehicle_details($i){
             <img src="./assets/ioniq6.jpg" alt="">
             <div class="details">
             <?php vehicle_details(7); ?>
-                <a href="booking.php?name=Hyundai-Ioniq6"><button class="booking">Book now</button></a>
+                <a href="booking.php?no=HYI6IO459H"><button class="booking"><?php availableStock(7);?></button></a>
             </div>
         </div>
     </section>
@@ -56,7 +70,16 @@ function vehicle_details($i){
             <img src="./assets/sportster-s.webp" alt="">
             <div class="details">
             <?php vehicle_details(8); ?>
-                <a href="booking.php?name=Harley-Davidson-SportsterS"><button class="booking">Book now</button></a>
+                <a href="booking.php?no=HLDS123S45D"><button class="booking"><?php availableStock(8);?></button></a>
+            </div>
+        </div>
+    </section>
+    <section class="table">
+        <div class="card">
+            <img src="assets/MB_Sprinter.jpg" alt="">
+            <div class="details">
+            <?php vehicle_details(9); ?>
+                <a href="booking.php?no=MCD1205P30V"><button class="booking"><?php availableStock(9);?></button></a>
             </div>
         </div>
     </section>

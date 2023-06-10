@@ -36,7 +36,7 @@
     <title>Log In</title>
     <link href="style.css" rel="stylesheet"/>
 </head>
-<body>
+<body style="background-image: url(assets/skin.jpg)">
 <header>
         <a class="logo-all" href="welcome.php"><img class="logo" src="./assets/Cyan on Black.png" alt="logo"><h4 class="am">Automobiles</h4></a>
         <nav>
