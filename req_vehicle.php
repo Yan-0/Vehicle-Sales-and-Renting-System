@@ -31,6 +31,17 @@
         }
     }else {
         $error[] = 'You need to be logged in to use this feature.';
+        echo ("<style>
+        #req_form{
+            pointer-events: none;
+            opacity: 50%;
+        }
+
+        .model, .brand, #veh_color{
+            height: 2.5rem;
+        }
+        
+        </style>");
     }
 ?>
 
@@ -43,6 +54,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="dropdown.js"></script>
     <title>Request a vehicle</title>
+    <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
 </head>
 <body>
     <header>
@@ -70,7 +82,7 @@
                 echo '<span style = "background: green; text-align: center;">'."Your request has been registered successfully".'</span>';
             }
             ?>
-        <form class="border" name="request" method="POST">
+        <form class="border" name="request" method="POST" id="req_form">
             <label class=label1>Vehicle Brand</label>
             <input class="brand" name="brand" type="text" placeholder="Eg: Ford" required>
             <label class=label2>Vehicle Model</label>

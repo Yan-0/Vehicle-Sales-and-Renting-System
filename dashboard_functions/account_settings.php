@@ -37,6 +37,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Settings</title>
+    <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>

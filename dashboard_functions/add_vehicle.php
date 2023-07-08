@@ -50,6 +50,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <title>Add a vehicle</title>
+    <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
     <style type="text/css">
 		.error{
 			color: red;

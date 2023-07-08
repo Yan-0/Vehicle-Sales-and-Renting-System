@@ -235,7 +235,8 @@ a{
 
 .grid_view{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 20px;
 }
 
 .table{
@@ -252,6 +253,7 @@ a{
 .card{
     display: flex;
     padding: 10px;
+    overflow: hidden;
 }
 
 .card img{
@@ -336,11 +338,14 @@ a{
 }
 
 .dropoff, .pickup_loc, #datetime1, #datetime2, #duration{
-    height: 2rem;
     width: 80%;
     border: none;
     padding: 5px;
     border-radius: 5px;
+}
+
+#datetime1, #datetime2, #duration{
+    height: 2rem;
 }
 
 .vehicle_type{
@@ -435,11 +440,14 @@ label{
 /*Req Vehicle Screen*/
 
 .model, .brand, #veh_color{
-    height: 2rem;
     width: 80%;
     border: none;
     padding: 5px;
     border-radius: 5px;
+}
+
+#veh_color{
+    height: 2rem;
 }
 
 .build_year{

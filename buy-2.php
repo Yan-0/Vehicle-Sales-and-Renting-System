@@ -39,6 +39,7 @@ function availableStock($i){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="dropdown.js"></script>
+    <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
     <title>Buy a vehicle</title>
 </head>
 <body>

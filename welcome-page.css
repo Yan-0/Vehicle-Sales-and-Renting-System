@@ -63,6 +63,7 @@ body {
     top: 80%;
     left: 46%;
     padding: 10px;
+    cursor: pointer;
   }
 
   h1 {
@@ -92,4 +93,5 @@ body {
   a{
     text-decoration: none;
     color: black;
+    
   }

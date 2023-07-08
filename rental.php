@@ -28,6 +28,10 @@
     
             if(mysqli_num_rows($result) > 0){
                 $error[] = 'You already have a rental request pending';
+            }elseif(strtolower($pickup) == strtolower($dropoff)){
+                $error[] = 'You have entered the same location for pickup and dropoff.';
+            }elseif($start_date > $end_date || $start_date == $end_date){
+                $error[] = 'Kindly choose valid date values.';
             }else{
                 $insert = "INSERT INTO rental(rented_by, pickup_loc, dropoff_loc, vehicle_type, duration, start_date, end_date) VALUES('$rented_by','$pickup','$dropoff', '$vehicle_type', '$duration', '$start_date', '$end_date')";
                 mysqli_query($conn, $insert);
@@ -45,7 +49,18 @@
         }
     }else {
         $error[] = 'You need to be logged in to use this feature.';
+        echo ("<style>
+        #rent_form{
+            pointer-events: none;
+            opacity: 50%;
+        }
+
+        .dropoff, .pickup_loc, #datetime1, #datetime2, #duration{
+            height: 2.5rem;
+        }
+        </style>");
     }
+
     
 ?>
 
@@ -57,6 +72,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="dropdown.js"></script>
+    <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
     <title>Rent a vehicle</title>
 </head>
 <body>
@@ -84,8 +100,8 @@
             if(isset($insert)){
                 echo '<span style = "background: green; text-align: center;">'."Your request has been registered successfully".'</span>';
             }
-            ?>
-        <form class="border" method="POST">
+    ?>
+        <form class="border" method="POST" id="rent_form">
             <label class=label1>Pick-up location</label>
             <input class="pickup_loc" name="pickup" type="text" placeholder="What's your pick-up city or airport?" required>
             <label class=label2>Drop-off location</label>
