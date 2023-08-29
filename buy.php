@@ -62,68 +62,79 @@ function availableStock($i){
     <div class="grid_view">
         <section class="table">
         <div class="card">
+            <a href="./desc_pages/bmw_series_6.php">
             <img src="./assets/2023-BMW-3-Series-6.webp" alt="">
             <div class="details">
                 <h3>
                 <?php vehicle_details(1); ?>
                 <a href="booking.php?no=BMWQ123TR"><button class="booking"><?php availableStock(1);?></button></a>
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
-            <img src="./assets/land-cruiser-lc-300.webp" alt="">
-            <div class="details">
+            <a href="./desc_pages/lc300.php">
+            <img src="./assets/lc-300.jpg" alt="">
+            <div class="details" style="padding-right: 60px">
                 <?php vehicle_details(2); ?>
                 <a href="booking.php?no=TYTL123C14V"><button class="booking"><?php availableStock(2);?></button></a>
                 <br><br>
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
+            <a href="./desc_pages/2021_MB_eclass.php">
             <img src="./assets/2021-MB-Eclass.webp" alt="">
             <div class="details">
             <?php vehicle_details(3); ?>
                 <a href="booking.php?no=MBE001C145E"><button class="booking"><?php availableStock(3);?></button></a>
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
+            <a href="./desc_pages/ford-f150.php">
             <img src="./assets/Ford-F150-2023.avif" alt="">
             <div class="details">
             <?php vehicle_details(4); ?>
                 <a href="booking.php?no=FF15R01459T"><button class="booking"><?php availableStock(4);?></button></a>
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
+            <a href="./desc_pages/jeep-compass.php">
             <img src="./assets/2023-Jeep-Compass.jpg" alt="">
-            <div class="details">
+            <div class="details"  style="padding-left: 80px">
             <?php vehicle_details(5); ?>
                 <a href="booking.php?no=JC456S2454C"><button class="booking">
                     <?php
                         availableStock(5);
                     ?>
                 </button></a>
-                
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
-            <img src="./assets/2022-Toyota-Supra.jpg" alt="">
+            <a href="./desc_pages/gr-supra.php">
+            <img src="./assets/2022-Toyota-Supra.jpg" alt="" style="width: 95%;">
             <div class="details">
             <?php vehicle_details(6); ?>
                 <a href="booking.php?no=TGR123S"><button class="booking">
                 <?php
                     availableStock(6);
-                    ?>
+                ?>
                 </button></a>
                 <br><br>
             </div>
+            </a>
         </div>
     </section>
     </div>

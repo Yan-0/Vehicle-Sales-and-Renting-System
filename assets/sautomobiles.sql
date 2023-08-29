@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 05:54 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Aug 24, 2023 at 07:46 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `booking` (
   `address` varchar(50) NOT NULL,
   `booked_vehicle` varchar(50) NOT NULL,
   `booking_status` varchar(20) NOT NULL DEFAULT 'pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `booking`
@@ -64,7 +64,7 @@ CREATE TABLE `rental` (
   `start_date` datetime(6) NOT NULL,
   `end_date` datetime(6) NOT NULL,
   `rental_status` char(20) NOT NULL DEFAULT 'pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rental`
@@ -74,6 +74,29 @@ INSERT INTO `rental` (`id`, `rented_by`, `pickup_loc`, `dropoff_loc`, `vehicle_t
 (13, 'Dhiraj Jha', 'Tribhuvan International Airport', 'Chitwan', 'Car', '1 days, 0 hours, 1 minutes', '2023-05-13 08:48:00.000000', '2023-05-14 08:49:00.000000', 'pending'),
 (17, 'Raunak Khadka', 'Kathmandu', 'Hetauda', 'Car', '0 days, 23 hours, 56 minutes', '2023-05-30 11:56:00.000000', '2023-05-31 11:52:00.000000', 'pending'),
 (19, 'Shreyan Bhandari', 'Nepalgunj', 'Kathmandu', 'Van', '1 days, 12 hours, 0 minutes', '2023-05-31 09:00:00.000000', '2023-06-01 21:00:00.000000', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rental_vehicles`
+--
+
+CREATE TABLE `rental_vehicles` (
+  `id` int(255) NOT NULL,
+  `vehicle_type` varchar(100) NOT NULL,
+  `quantity` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rental_vehicles`
+--
+
+INSERT INTO `rental_vehicles` (`id`, `vehicle_type`, `quantity`) VALUES
+(1, 'Car', 5),
+(2, 'Bus', 2),
+(3, 'Motorbike', 10),
+(4, 'Microbus', 2),
+(5, 'SUV', 2);
 
 -- --------------------------------------------------------
 
@@ -90,7 +113,7 @@ CREATE TABLE `user` (
   `address` varchar(255) NOT NULL DEFAULT 'Kathmandu',
   `country` varchar(255) NOT NULL DEFAULT 'Nepal',
   `user_type` varchar(255) NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -115,22 +138,24 @@ CREATE TABLE `vehicles` (
   `color` text NOT NULL,
   `vehicle_type` varchar(50) NOT NULL,
   `vehicle_price` int(50) NOT NULL,
-  `image_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `image_name` varchar(255) NOT NULL,
+  `quantity` int(50) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`vehicle_id`, `vehicle_model`, `make_year`, `color`, `vehicle_type`, `vehicle_price`, `image_name`) VALUES
-(1, 'BMW Series 6', 2023, 'Silver', 'Sedan', 43000, ''),
-(2, 'Toyota LC300', 2023, 'White', 'SUV', 89990, ''),
-(3, 'Mercedes-Benz E-Class', 2021, 'Gunmetal Grey', 'Sedan', 57800, ''),
-(4, 'Ford F-150 Raptor', 2023, 'Black', 'Pickup Truck', 109145, ''),
-(5, 'Jeep Compass', 2023, 'Dual Tone', 'SUV', 35745, ''),
-(6, 'Toyota GR Supra', 2022, 'White', 'Sports Car', 63280, ''),
-(7, 'Hyundai Ioniq 6', 2023, 'Tan', 'Sedan', 57800, ''),
-(8, 'Harley-Davidson Sportster S', 2023, 'Dual Tone (Black/White)', 'Cruiser Bike', 15599, '');
+INSERT INTO `vehicles` (`vehicle_id`, `vehicle_model`, `make_year`, `color`, `vehicle_type`, `vehicle_price`, `image_name`, `quantity`) VALUES
+(1, 'BMW Series 6', 2023, 'Silver', 'Sedan', 43000, '', 1),
+(2, 'Toyota LC300', 2023, 'White', 'SUV', 89990, '', 0),
+(3, 'Mercedes-Benz E-Class', 2021, 'Gunmetal Grey', 'Sedan', 57800, '', 1),
+(4, 'Ford F-150 Raptor', 2023, 'Black', 'Pickup Truck', 109145, '', 1),
+(5, 'Jeep Compass', 2023, 'Dual Tone', 'SUV', 35745, '', 1),
+(6, 'Toyota GR Supra', 2022, 'White', 'Sports Car', 63280, '', 1),
+(7, 'Hyundai Ioniq 6', 2023, 'Tan', 'Sedan', 57800, '', 1),
+(8, 'Harley-Davidson Sportster S', 2023, 'Dual Tone (Black/White)', 'Cruiser Bike', 15599, '', 1),
+(9, 'Mercedes Sprinter', 2023, 'Black', 'Van', 59990, '', 1);
 
 -- --------------------------------------------------------
 
@@ -145,7 +170,7 @@ CREATE TABLE `vehicle_requested` (
   `model` varchar(100) NOT NULL,
   `make_year` int(10) NOT NULL,
   `vehicle_color` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vehicle_requested`
@@ -171,6 +196,12 @@ ALTER TABLE `booking`
 ALTER TABLE `rental`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `rental_vehicles`
+--
+ALTER TABLE `rental_vehicles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -206,6 +237,12 @@ ALTER TABLE `booking`
 --
 ALTER TABLE `rental`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `rental_vehicles`
+--
+ALTER TABLE `rental_vehicles`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`

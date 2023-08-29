@@ -257,7 +257,7 @@ a{
 }
 
 .card img{
-    width: 55%;
+    width: 100%;
     height: 210px;
     border-radius: 15px;
 }
@@ -319,6 +319,41 @@ a{
 }
 
 /*Purchase Screen end*/
+
+/*Product Description page start*/
+
+.desc_card{
+    display: flex;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.desc_card img{
+    width: 55%;
+    height: 30rem;
+    border-radius: 15px;
+}
+
+.desc_header{
+    margin-left: 6%;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.desc_title{
+    display: flex;
+}
+
+.info_button{
+    margin-top: 20%;
+    margin-left: 20%;
+}
+
+.desc_info{
+    color: white;
+}
+
+/*Product Description page end*/
 
 /*Rent Screen Start*/
 

@@ -59,29 +59,35 @@ function availableStock($i){
     <div class="grid_view">
     <section class="table">
         <div class="card">
-            <img src="./assets/ioniq6.jpg" alt="">
-            <div class="details">
+            <a href="./desc_pages/ioniq-6.php">
+            <img src="./assets/ioniq6.jpg" alt="" >
+            <div class="details"  style="padding-right: 80px">
             <?php vehicle_details(7); ?>
                 <a href="booking.php?no=HYI6IO459H"><button class="booking"><?php availableStock(7);?></button></a>
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
+            <a href="./desc_pages/harley-sportster.php">
             <img src="./assets/sportster-s.webp" alt="">
             <div class="details">
             <?php vehicle_details(8); ?>
                 <a href="booking.php?no=HLDS123S45D"><button class="booking"><?php availableStock(8);?></button></a>
             </div>
+            </a>
         </div>
     </section>
     <section class="table">
         <div class="card">
+            <a href="./desc_pages/mercedes-sprinter.php">
             <img src="assets/MB_Sprinter.jpg" alt="">
             <div class="details">
             <?php vehicle_details(9); ?>
                 <a href="booking.php?no=MCD1205P30V"><button class="booking"><?php availableStock(9);?></button></a>
             </div>
+            </a>
         </div>
     </section>
     </div>

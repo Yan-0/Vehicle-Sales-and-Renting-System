@@ -48,7 +48,7 @@
             
         }
     }else {
-        $error[] = 'You need to be logged in to use this feature.';
+        $error[] = "You need to be logged in to use this feature. <a class='but' href='login.php'>Click here to Login</a>";
         echo ("<style>
         #rent_form{
             pointer-events: none;
