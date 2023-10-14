@@ -104,5 +104,20 @@ function availableStock($i){
             </ul>
         </nav>
     </footer>
+    <script>
+        const buttons = document.getElementsByClassName('booking');
+
+        for (let i = 0; i < buttons.length; i++) {
+            const button = buttons[i];
+            if (button.innerText.toLowerCase().includes('out of stock')) {
+                button.disabled = true; // Disable the button
+                button.style.background = 'darkred';
+                button.style.color = 'white'
+            } else {
+                button.disabled = false; // Enable the button
+                button.style.color = '';
+            }
+        }
+    </script>
 </body>
 </html>

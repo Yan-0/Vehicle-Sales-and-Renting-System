@@ -1,32 +1,6 @@
 <?php
     include "../widgets/config.php";
 
-    // if (isset($_POST['sub'])) {
-	// 	$brand = mysqli_real_escape_string($conn, $_POST['brand']);
-    //     $model = mysqli_real_escape_string($conn, $_POST['model']);
-    //     $year = mysqli_real_escape_string($conn, $_POST['make_year']);
-    //     $vehicle_type = mysqli_real_escape_string($conn, $_POST['vehicle_type']);
-    //     $price = mysqli_real_escape_string($conn, $_POST['price']);
-    //     $color = mysqli_real_escape_string($conn, $_POST['color']);
-
-	// 	$target_dir = "uploads/";
-	// 	$a = $_FILES["image"]["name"];
-	// 	$target_file = $target_dir . $a;
-	// 	if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-	// 		$image = $_FILES['image']['name'];
-	// 	}
-	// 	$sql = "INSERT INTO vehicles(vehicle_model, make_year, color, vehicle_type, vehicle_price, image_name)
-	// 	VALUES ('$brand $model','$year', '$color', '$vehicle_type', '$price', '$a')";
-	// 	if (mysqli_query($conn, $sql)) {
-    // 		$message = "New vehicle inserted successfully";
-	// 	} 
-	// 	else {
-    // 	    $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
-	// 	}
-	    
-		
-	// }
-
         if (isset($_POST['sub'])) {
             $brand = mysqli_real_escape_string($conn, $_POST['brand']);
             $model = mysqli_real_escape_string($conn, $_POST['model']);
@@ -99,9 +73,7 @@
             </select>
             <label class=label_color for="vehicle_color">Vehicle Color</label>
             <input type="text" name="color" id="veh_color" placeholder="Specify color of the vehicle">
-            <label class=label_image for="file">Select image file to upload</label>
-            <input type="file" name="file" id="veh_image">
-            
+
             <label class=label_make>Select Make Year</label>
             <select class="make_year" name="make_year">
                 <option value="2019">2019</option>

@@ -126,7 +126,7 @@
             <label class=label6 for="datetime2">Drop-off date and time</label>
             <input id="datetime2" name="end_date" type="datetime-local" required min="<?php echo $dt;?>">
             <input type="text" name="rented_by" value="<?php echo $login_session;?>" /hidden>
-            <input class="rent_sub" name="sub" type="submit" value="Confirm">
+            <input class="rent_sub" name="sub" type="submit" value="Confirm" onclick="return ">
         </form>
     </section>
 
@@ -148,7 +148,6 @@
             document.getElementById("duration").value = days + " days, " + hours + " hours, " + minutes + " minutes";
             }
         }
-
         document.getElementById("datetime1").addEventListener("change", calculateDifference);
         document.getElementById("datetime2").addEventListener("change", calculateDifference);
     </script>

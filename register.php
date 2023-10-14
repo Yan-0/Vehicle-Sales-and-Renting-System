@@ -7,7 +7,7 @@
         $fname = mysqli_real_escape_string($conn, $_POST['fullname']);
         $address = mysqli_real_escape_string($conn, $_POST['address']);
 
-        $select = "SELECT * FROM user WHERE phone = '$phone' && email = '$email'";
+        $select = "SELECT * FROM user WHERE phone = '$phone' || email = '$email'";
 
         $result = mysqli_query($conn, $select);
 
@@ -44,7 +44,7 @@
     <section class="all">
         <div id="form">
             <h1 class="log">Register an Account</h1>
-                <form action="" method="POST" name="login_form" enctype="multipart/form-data">
+                <form action="" method="POST" name="login_form" enctype="multipart/form-data" onsubmit="return valid()">
                     <?php
                         if(isset($error)){
                             foreach ($error as $error) {
@@ -60,7 +60,7 @@
                     <p><input required type="text" placeholder="Full Name" name="fullname" class="fin"></p>
                     <p><input required type="text" placeholder="Phone" name="phone" class="fin"></p>
                     <p><input required type="text" placeholder="Address" name="address" class="fin" id="padd"></p>
-                    <button type="submit" class="but" name="sub" onclick = "valid()">Register</button>
+                    <button type="submit" class="but" name="sub">Register</button>
                     <p class="new">Already have an account? <a href="./login.php#form">Log in</a></p>
                 </form>
         </div>

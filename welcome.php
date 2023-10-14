@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="welcome-page.css" rel="stylesheet">
-    <title>Stellar Automobiles</title>
+    <title>Vehicle Booking & Rental System</title>
     <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
 </head>
 <body>

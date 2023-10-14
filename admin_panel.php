@@ -51,9 +51,56 @@
         }
         echo '</table>';
     }
-    // $tableName = "user";
-    //                         $excludedColumn = "password";
-    //                         displayTable($tableName, $excludedColumn);
+
+    function confirm_book($login_session){
+        $stmt = $conn->prepare("UPDATE booking SET booking_status = 'completed' WHERE booking_id = ?");
+        $stmt->bind_param("i", $login_session);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+
+    function cancel_booking($booking_id){
+        $stmt = $conn->prepare("UPDATE booking SET booking_status = 'cancelled' WHERE booking_id = ?");
+        $stmt->bind_param("i", $booking_id);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+
+    function complete_booking($booking_id){
+        $stmt = $conn->prepare("UPDATE booking SET booking_status = 'completed' WHERE booking_id = ?");
+        $stmt->bind_param("i", $booking_id);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+
+    function confirm_rent($login_session){
+        $stmt = $conn->prepare("UPDATE rental SET rental_status = 'completed' WHERE id = ?");
+        $stmt->bind_param("i", $login_session);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+
+    function cancel_rent($id){
+        $stmt = $conn->prepare("UPDATE rental SET rental_status = 'cancelled' WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+
+    function complete_rent($id){
+        $stmt = $conn->prepare("UPDATE rental SET rental_status = 'completed' WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -167,11 +214,21 @@
                                 foreach ($data[0] as $header => $value) {
                                         echo '<th>' . $header . '</th>';
                                 }
+                                echo '<th>Action</th>';
                                 echo '</tr>';
                                  foreach ($data as $row) {
                                     echo '<tr>';
                                     foreach ($row as $header => $value) {
                                             echo '<td>' . $value . '</td>';
+                                    }
+                                    if ($row['booking_status'] == 'confirmed') {
+                                        echo '<td><button class="button_av" onclick="completeBooking(' . $row['booking_id'] . ')">Complete</button> <button class="button_av" onclick="cancelBooking(' . $row['booking_id'] . ')">Cancel</button></td>';
+                                    } elseif ($row['booking_status'] == 'completed') {
+                                        echo '<td>&#10004;</td>';
+                                    } elseif ($row['booking_status'] == 'cancelled') {
+                                        echo '<td>&times;</td>';
+                                    }elseif ($row['booking_status'] == 'pending') {
+                                        echo '<td><button class="button_av" onclick="confirmBooking(' . $row['booking_id'] . ')">Confirm</button> <button class="button_av" onclick="cancelBooking(' . $row['booking_id'] . ')">Cancel</button></td>';
                                     }
                                     echo '</tr>';
                                 }
@@ -213,11 +270,21 @@
                                 foreach ($data[0] as $header => $value) {
                                         echo '<th>' . $header . '</th>';
                                 }
+                                echo '<th>Action</th>';
                                 echo '</tr>';
                                  foreach ($data as $row) {
                                     echo '<tr>';
                                     foreach ($row as $header => $value) {
                                             echo '<td>' . $value . '</td>';
+                                    }
+                                    if ($row['rental_status'] == 'confirmed') {
+                                        echo '<td><button class="button_av" onclick="completeRental(' . $row['id'] . ')">Complete</button> <button class="button_av" onclick="cancelRental(' . $row['id'] . ')">Cancel</button></td>';
+                                    } elseif ($row['rental_status'] == 'completed') {
+                                        echo '<td>&#10004;</td>';
+                                    } elseif ($row['rental_status'] == 'cancelled') {
+                                        echo '<td>&times;</td>';
+                                    }elseif ($row['rental_status'] == 'pending') {
+                                        echo '<td><button class="button_av" onclick="confirmRental(' . $row['id'] . ')">Confirm</button> <button class="button_av" onclick="cancelRental(' . $row['id'] . ')">Cancel</button></td>';
                                     }
                                     echo '</tr>';
                                 }
@@ -372,6 +439,108 @@
           event.target.style.display = "none";
         }
       };
+
+      function confirmBooking(bookingId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'confirm_booking.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                alert('Booking confirmed successfully!');
+            } else {
+                alert('Error confirming booking. Please try again later.');
+            }
+        };
+        xhr.onerror = function () {
+            alert('Error confirming booking. Please try again later.');
+        };
+        xhr.send('booking_id=' + bookingId);
+    };
+
+    function cancelBooking(bookingId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'cancel_booking.php', true); 
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                alert('Booking cancelled successfully!');
+            } else {
+                alert('Error cancelling booking. Please try again later.');
+            }
+        };
+        xhr.onerror = function () {
+            alert('Error cancelling booking. Please try again later.');
+        };
+        xhr.send('booking_id=' + bookingId);
+    }
+
+    function completeBooking(bookingId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'complete_booking.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                alert('Booking completed successfully!');
+            } else {
+                alert('Error completing booking. Please try again later.');
+            }
+        };
+        xhr.onerror = function () {
+            alert('Error completing booking. Please try again later.');
+        };
+        xhr.send('booking_id=' + bookingId);
+    }
+
+    function confirmRental(rentalId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'confirm_rental.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                alert('Rental confirmed successfully!');
+            } else {
+                alert('Error confirming rental. Please try again later.');
+            }
+        };
+        xhr.onerror = function () {
+            alert('Error confirming rental. Please try again later.');
+        };
+        xhr.send('id=' + rentalId);
+    };
+
+    function cancelRental(rentalId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'cancel_rental.php', true); 
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                alert('Rental cancelled successfully!');
+            } else {
+                alert('Error cancelling Rental. Please try again later.');
+            }
+        };
+        xhr.onerror = function () {
+            alert('Error cancelling rental. Please try again later.');
+        };
+        xhr.send('id=' + rentalId);
+    }
+
+    function completeRental(rentalId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'complete_rental.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                alert('Rental completed successfully!');
+            } else {
+                alert('Error completing rental. Please try again later.');
+            }
+        };
+        xhr.onerror = function () {
+            alert('Error completing rental. Please try again later.');
+        };
+        xhr.send('id=' + rentalId);
+    }
       </script>
 </body>
 </html>

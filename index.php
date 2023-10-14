@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Automobiles</title>
+    <title>Vehicle Booking & Rental System</title>
     <link rel="Website Icon" type="png" href="./assets/Cyan on Black.png">
     <link rel="stylesheet" href="style.css">
     <script src="dropdown.js"></script>
@@ -25,7 +25,7 @@
     </header>
     <div id="main">
       <section id="billboard">
-        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Do you feel like driving or renting today?</h1>
+        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Do you feel like Buying or Renting today?</h1>
         <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Motorbikes, Cars, Vans, Buses. We have it all!</h4>
         <div class="option">
             <div class="opt1">
@@ -82,7 +82,7 @@
             <div>
                 <h3 style="margin: 0;">Contact us</h3>
                 <a href="tel:+977-9861960112"><img src="./assets/Phone.png"><h5>+977-9861960112</h5></a>
-                <a href="mailto:safeautomobiles@gmail.com"><img src="./assets/Email.png" alt=""><h5>stellarautomobiles@gmail.com</h5></a>
+                <a href="mailto:safeautomobiles@gmail.com"><img src="./assets/Email.png" alt=""><h5>vbrs@gmail.com</h5></a>
             </div>
             <div style="padding-right: 20px;">
                 <h3 style="margin: 0;">Our outlets</h3>

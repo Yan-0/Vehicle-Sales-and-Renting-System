@@ -55,7 +55,7 @@
       <section id="billboard">
       <div id="form">
             <h1 class="log">Account Settings</h1>
-                <form action="" method="POST" name="acc_sett" enctype="multipart/form-data">
+                <form action="" method="POST" name="acc_sett" enctype="multipart/form-data" onsubmit="return valid()">
                     <?php
                         if(isset($error)){
                             foreach ($error as $error) {
@@ -78,7 +78,7 @@
                     Change Phone Number: <input type="text" placeholder="New phone number" name="phone" class="fin"><br>
                     <input type="text" name="active_id" value="<?php echo $login_session;?>" /hidden>
                     </div>
-                    <p><button type="submit" id="sett_but" name="sub" onclick = "valid()">Confirm</button></p>
+                    <p><button type="submit" id="sett_but" name="sub">Confirm</button></p>
                 </form>
         </div>
       </section>
@@ -99,7 +99,7 @@
             return false;
         }
 
-        if(pass.length >=1 && pass.length < 5){
+        if(pass.length >= 1 && password.length < 5){
             alert("Enter a password with more than 5 characters");
             return false;
         }

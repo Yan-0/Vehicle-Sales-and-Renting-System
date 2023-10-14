@@ -31,7 +31,7 @@
             <button class="func_button" data-modal="modal01">
                 <div class="func_count">
                 <?php 
-                    $sql = "SELECT COUNT(booked_by) FROM booking where booked_by = '$login_session' AND booking_status = 'pending'";
+                    $sql = "SELECT COUNT(booked_by) FROM booking where booked_by = '$login_session' AND (booking_status = 'confirmed' or booking_status = 'pending')";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result->num_rows > 0) {
@@ -48,7 +48,7 @@
                         <a class="close">&times;</a>
                             <h2>Active Bookings</h2>
                             <p><?php
-                                $query = "SELECT * FROM booking where booked_by ='$login_session' and booking_status = 'pending'";
+                                $query = "SELECT * FROM booking where booked_by ='$login_session' AND (booking_status = 'confirmed' or booking_status = 'pending')";
                                 $result = mysqli_query($conn, $query);
                         
                                 $data = array();
@@ -148,7 +148,7 @@
                 <div class="modal-content">
                     <div class="popup-display">
                         <a class="close">&times;</a>
-                            <h2>Requested Vechicles</h2>
+                            <h2>Requested Vehicles</h2>
                             <p><?php
                                 $query = "SELECT * FROM vehicle_requested where requested_by ='$login_session' and status = 'pending'";
                                 $result = mysqli_query($conn, $query);

@@ -25,7 +25,7 @@
     </header>
     <div id="main">
       <section id="billboard">
-        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Welcome to Stellar Automobiles!</h1><br>
+        <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Welcome to Vehicle Booking and Rental System!</h1><br>
         <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">We are a team of passionate car enthusiasts who understand the importance of having a reliable and comfortable vehicle. We strive to provide our customers with the best selection of vehicles at competitive prices.
           <br><br>
           Our mission is to make buying and renting vehicles a hassle-free experience. We believe that everyone deserves to have a car that fits their needs and budget. That's why we offer a wide variety of vehicles to choose from, ranging from compact cars to luxury SUVs. We also provide flexible rental options to accommodate different lifestyles and travel plans.
@@ -51,13 +51,13 @@
             <div class="padding">
               <div class="test">
                 <img class="avatar" src="./assets/avatar2.jpg" alt=""><h5 class=test_name>Raunak Khadka</h5>
-                <p class="test_text">I had bought a Ford F-150 Raptor from Stellar. The experience of buying with them was splendid😄.</p>
+                <p class="test_text">I had bought a Ford F-150 Raptor from here. The experience of buying with them was splendid😄.</p>
               </div>
             </div>
             <div class="padding">
               <div class="test">
                 <img class="avatar" src="./assets/avatar3.jpg" alt=""><h5 class=test_name>Jubin Karki</h5>
-                <p class="test_text">We rented a SUV for our trip to Pokhara. Our trip went great thanks to Stellar Automobiles.</p>
+                <p class="test_text">We rented a SUV for our trip to Pokhara. Our trip went great thanks to these guys at VBRS.</p>
                 
               </div>
             </div>
